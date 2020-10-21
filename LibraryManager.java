@@ -13,6 +13,10 @@ public class LibraryManager {
 		UNKNOWN
 	}
 
+	public static void main(String[] args) {
+		System.out.println("Hello");		
+	}
+			
 	public void start() {
 		// TODO - implement LibraryManager.start
 		throw new UnsupportedOperationException();
