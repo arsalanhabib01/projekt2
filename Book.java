@@ -20,6 +20,11 @@ public class Book {
 		this.title = title;
 		this.value = value;
 	}
+	
+	@Override      // Overshadowed the toString() method
+	public String toString() {  
+		return "Product Id : " + id + "  Book Title : " + title + " Book Cost : " + value ;
+	}
 
 	/**
 	 * 
