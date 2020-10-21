@@ -17,7 +17,9 @@ public class Movie {
 	 */
 	public void product(int id, String title, int value, boolean borrowed) {
 		// TODO - implement Movie.product
-		throw new UnsupportedOperationException();
+		this.id = id;
+		this.title = title;
+		this.value = value;
 	}
 
 	/**
