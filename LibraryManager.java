@@ -1,6 +1,9 @@
+import java.io.FileNotFoundException;
+
 public class LibraryManager {
 
 	private IntLib library;
+	private static final String libPath = "library.csv";
 
 	public enum Command {
 		LIST,
@@ -13,9 +16,26 @@ public class LibraryManager {
 		UNKNOWN
 	}
 
+	public static void main(String[] args) {
+		LibraryManager manager = new LibraryManager(libPath);
+		manager.start();
+	}
+
+	public LibraryManager (String libPath) {
+		try {
+			library = new Library(libPath);
+		} catch (FileNotFoundException fne) {
+			fne.printStackTrace();
+			System.out.println("No file found at " + libPath);
+			System.out.println("Exiting.");
+			System.exit(0);
+		}
+	}
+
+
+
 	public void start() {
-		// TODO - implement LibraryManager.start
-		throw new UnsupportedOperationException();
+		System.out.print("Hello hello");
 	}
 
 
