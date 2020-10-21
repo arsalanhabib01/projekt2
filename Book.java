@@ -16,8 +16,9 @@ public class Book {
 	 * @param borrowed
 	 */
 	public void product(int id, String title, int value, boolean borrowed) {
-		// TODO - implement Book.product
-		throw new UnsupportedOperationException();
+		this.id = id;
+		this.title = title;
+		this.value = value;
 	}
 
 	/**
