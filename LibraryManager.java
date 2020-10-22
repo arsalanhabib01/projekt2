@@ -59,11 +59,13 @@ public class LibraryManager {
 				case LIST:
 					break;
 				case CHECKOUT:
+					checkoutCommand(arguments);
 					break;
 				case CHECKIN:
+					checkinCommand(arguments);
 					break;
 				case REGISTER:
-					registerCommand(arguments);
+					registerCommand();
 					break;
 				case DEREGISTER:
 					deregisterCommand(arguments);
@@ -110,7 +112,7 @@ public class LibraryManager {
 		return arguments2;
 	}
 
-	private static void registerCommand(String[] argument) {
+	private static void checkoutCommand(String[] argument) {
 
 		String str = argument[0];
 		int count = 0;
@@ -121,10 +123,32 @@ public class LibraryManager {
 				count++;
 		}
 		if(count == 0)
-			System.out.println("testing register " + argument[0]);
+			System.out.println("testing checkout " + argument[0]);
 		else
-			System.out.println("Cannot Register must be a number" );
+			System.out.println("Cannot checkout Id must be a number" );
 	}
+
+	private static void checkinCommand(String[] argument) {
+
+		String str = argument[0];
+		int count = 0;
+		for (int i = 0 ; i < str.length(); i++)
+		{
+			char ch = str.charAt(i);
+			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch<= 'z')
+				count++;
+		}
+		if(count == 0)
+			System.out.println("testing Checkin " + argument[0]);
+		else
+			System.out.println("Cannot Checkin Id must be a number" );
+	}
+
+	private static void registerCommand() {
+			System.out.println("testing register ");
+
+	}
+
 
 	private static void deregisterCommand(String[] argument) {
 

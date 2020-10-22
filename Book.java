@@ -15,6 +15,17 @@ public class Book {
 		this.pages = pages;
 		this.publisher = publisher;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	//public void getId(){
+	//	this.id = id;
+	//}
 	
 	@Override      // Overshadowed the toString() method
 	public String toString() {
