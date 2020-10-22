@@ -51,8 +51,9 @@ public class LibraryManager {
 		while (running) {
 
 		String userInput = scanner.nextLine();
-		Command commandString = parseCommand(userInput);
 
+		try {
+		Command commandString = parseCommand(userInput);
 
 			String[] arguments = parseArguments(userInput);
 			switch (commandString) {
@@ -85,7 +86,10 @@ public class LibraryManager {
 					System.out.println("Unknown Command");
 					continue;
 			}
-
+		} catch (IllegalArgumentException iae){
+			System.out.println(iae.getMessage());
+			start();
+			}
 		}
 		scanner.close();
 	}
