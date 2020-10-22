@@ -9,7 +9,7 @@ public class LibraryManager {
 	private IntLib library;
 	private static final String libPath = "library.csv";
 
-	public enum Command {
+	private enum Command {
 		LIST,
 		CHECKOUT,
 		CHECKIN,
@@ -43,43 +43,46 @@ public class LibraryManager {
 	}
 
 
-
 	public void start() {
 		Scanner scanner = new Scanner(System.in);
+		boolean running = true;
+
 		String userInput = scanner.nextLine();
-		parseCommand(userInput);
+		Command commandString = parseCommand(userInput);
 
+		while (running) {
+			switch (commandString) {
+				case LIST:
+					break;
+				case CHECKOUT:
+					break;
+				case CHECKIN:
+					break;
+				case REGISTER:
+					registerCommand();
+					break;
+				case DEREGISTER:
+					break;
+				case INFO:
+					break;
+
+				case QUIT:
+					break;
+				default:
+					break;
+			}
+
+		}
+		scanner.close();
 	}
-
 
 	public static Command parseCommand(String userInput) {
+		String commandString = userInput.split(" ")[0].toUpperCase();
+		return Command.valueOf(commandString);
 
-		String commandString = userInput.split(" ")[0];
-
-		switch (commandString) {
-			case "list":
-				return Command.LIST;
-			case "checkout":
-				return Command.CHECKOUT;
-			case "checkin":
-				return Command.CHECKIN;
-			case "register":
-			//	System.out.println("Register");
-				registerComamnd();
-				break;
-			case "deregister":
-				return Command.DEREGISTER;
-			case "info":
-				return Command.INFO;
-
-			case "quit":
-				return Command.QUIT;
-			default:
-				return Command.UNKNOWN;
-		}
-		return null;
 	}
-	private static void registerComamnd() {
+
+	private static void registerCommand() {
 		System.out.println("testing register");
 	}
 
