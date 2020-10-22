@@ -8,21 +8,23 @@ public class Book {
 	private int pages;
 	private String publisher;
 
-	public void product(int id, String title, int value, boolean borrowed) {
+	public Book(int id, String title, int value, int pages, String publisher) {
 		this.id = id;
 		this.title = title;
 		this.value = value;
+		this.pages = pages;
+		this.publisher = publisher;
 	}
 	
 	@Override      // Overshadowed the toString() method
-	public String toString() {  
-		return "Product Id : " + id + "  Book Title : " + title + " Book Cost : " + value ;
+	public String toString() {
+		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + "(in stock)";
 	}
 
 
 	public void update(int pages, String publisher) {
 
-		throw new UnsupportedOperationException();
+
 	}
 
 }

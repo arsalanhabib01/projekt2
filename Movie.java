@@ -9,7 +9,7 @@ public class Movie {
 	private float rating;
 
 
-	public void product(int id, String title, int value, boolean borrowed) {
+	public void Movie(int id, String title, int value, boolean borrowed) {
 		this.id = id;
 		this.title = title;
 		this.value = value;
@@ -17,7 +17,6 @@ public class Movie {
 
 	public void update(int length, float rating) {
 
-		throw new UnsupportedOperationException();
 	}
 
 }

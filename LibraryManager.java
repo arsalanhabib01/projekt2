@@ -1,4 +1,8 @@
 import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
 
 public class LibraryManager {
 
@@ -19,6 +23,12 @@ public class LibraryManager {
 	public static void main(String[] args) {
 		LibraryManager manager = new LibraryManager(libPath);
 		manager.start();
+
+		Book bok1 = new Book(1, "Harry Potter", 302, 203, "JK. Rolling");
+		System.out.println( bok1.toString()) ;
+
+
+
 	}
 
 	public LibraryManager (String libPath) {
@@ -35,7 +45,9 @@ public class LibraryManager {
 
 
 	public void start() {
-		System.out.print("Hello hello hello");
+		Scanner scanner = new Scanner(System.in);
+		String userInput = scanner.nextLine();
+
 	}
 
 
@@ -64,10 +76,13 @@ public class LibraryManager {
 		}
 	}
 
-
 	public void parseArgument(String[] userInput) {
 		// TODO - implement LibraryManager.parseArgument
 		throw new UnsupportedOperationException();
+	}
+
+	private void register(String[] arguments) {
+		System.out.print("testing register");
 	}
 
 
