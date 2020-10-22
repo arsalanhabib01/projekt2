@@ -1,7 +1,9 @@
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 
 public class Library implements IntLib {
 
+	private LinkedList allProducts;
 	//private Book[] books;
 	//private Movie[] movies;
 	private String libPath;

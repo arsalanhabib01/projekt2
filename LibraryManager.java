@@ -58,6 +58,7 @@ public class LibraryManager {
 			String[] arguments = parseArguments(userInput);
 			switch (commandString) {
 				case LIST:
+					listCommand();
 					break;
 				case CHECKOUT:
 					checkoutCommand(arguments);
@@ -175,6 +176,11 @@ public class LibraryManager {
 
 		System.out.println("Successfully deregistered " + argument[0]);
 
+	}
+
+	private static void listCommand() {
+		LinkedList<Object> allProducts = new LinkedList<Object>(Arrays.asList()); //working on this
+		System.out.println("Command to get all books");
 	}
 
 
