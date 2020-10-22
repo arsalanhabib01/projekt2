@@ -175,7 +175,6 @@ public class LibraryManager {
 				} else if (c == 'b') {
 					// call here class book
 					manager.library.register();
-					System.out.println("test book");
 				} else {
 					System.out.println("unknown character");
 					registerCommand();
@@ -191,8 +190,10 @@ public class LibraryManager {
 	}
 
 	private static void listCommand() {
-		LinkedList<Object> allProducts = new LinkedList<Object>(Arrays.asList()); //working on this
+
+	LinkedList<Object> allProducts = new LinkedList<Object>(Arrays.asList()); //working on this
 		System.out.println("Command to get all books");
+
 	}
 
 

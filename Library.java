@@ -45,7 +45,6 @@ public class Library implements IntLib {
 		Scanner st = new Scanner(System.in);
 		System.out.println("Enter title: "  );
 		System.out.print("> ");
-		//sc.next();
 		bok.setTitle(st.nextLine());
 		//System.out.println(bok.getTitle());
 		System.out.println("Enter Value: "  );
@@ -63,9 +62,7 @@ public class Library implements IntLib {
 		//System.out.println(bok.getPublisher());
 		//System.out.println(bok.toString());
 		allProducts.add(bok);
-		System.out.println(allProducts);
-
-
+		System.out.println(Arrays.asList(allProducts));
 
 	}
 
