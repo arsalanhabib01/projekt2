@@ -51,8 +51,10 @@ public class LibraryManager {
 		while (running) {
 
 		String userInput = scanner.nextLine();
+		//if()
 		Command commandString = parseCommand(userInput);
 
+		String[] arguments = parseArguments(userInput);
 			switch (commandString) {
 				case LIST:
 					break;
@@ -61,9 +63,10 @@ public class LibraryManager {
 				case CHECKIN:
 					break;
 				case REGISTER:
-					registerCommand();
+					registerCommand(arguments);
 					break;
 				case DEREGISTER:
+					deregisterCommand(arguments);
 					break;
 				case INFO:
 					break;
@@ -93,8 +96,31 @@ public class LibraryManager {
 
 	}
 
-	private static void registerCommand() {
-		System.out.println("testing register");
+//	public static Command parseArguments(String userInput)
+//	{
+//		String argument = userInput.split(" ")[1];
+//		return Command.valueOf(argument);
+//	}
+
+	private String[] parseArguments(String userInput) {
+		String[] arguments = userInput.split(" ");
+		String[] arguments2 = new String[arguments.length-1];
+		for (int i = 1; i < arguments.length; i++) {
+			arguments2[i - 1] = arguments[i];
+		}
+		return arguments2;
+	}
+
+	private static void registerCommand(String[] argument) {
+		//parseArguments(argument);
+		//String commandString = argument.split(" ")[1];
+	//	int runtime = Integer.parseString(argument);
+		System.out.println("testing register " + argument[0]);
+	}
+
+	private static void deregisterCommand(String[] argument) {
+
+		System.out.println("testing de-register " + argument[0]);
 	}
 
 	//private static void registerCommand() {
