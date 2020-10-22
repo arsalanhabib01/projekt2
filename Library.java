@@ -4,10 +4,10 @@ public class Library implements IntLib {
 
 	//private Book[] books;
 	//private Movie[] movies;
-	private String productPath;
+	private String libPath;
 
-	public Library (String productPath) throws FileNotFoundException {
-		this.productPath = productPath;
+	public Library (String libPath) throws FileNotFoundException {
+		this.libPath = libPath;
 		//books = parseBooks(productPath);  //not sure if this is right
 		//movies = parseMovies(productPath);
 	}
