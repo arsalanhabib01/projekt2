@@ -47,6 +47,7 @@ public class LibraryManager {
 	public void start() {
 		Scanner scanner = new Scanner(System.in);
 		String userInput = scanner.nextLine();
+		parseCommand(userInput);
 
 	}
 
@@ -63,7 +64,9 @@ public class LibraryManager {
 			case "checkin":
 				return Command.CHECKIN;
 			case "register":
-				return Command.REGISTER;
+			//	System.out.println("Register");
+				registerComamnd();
+				break;
 			case "deregister":
 				return Command.DEREGISTER;
 			case "info":
@@ -74,16 +77,23 @@ public class LibraryManager {
 			default:
 				return Command.UNKNOWN;
 		}
+		return null;
 	}
+	private static void registerComamnd() {
+		System.out.println("testing register");
+	}
+
+	//private static void registerCommand() {
+		//System.out.print("testing register");
+//	}
+
 
 	public void parseArgument(String[] userInput) {
 		// TODO - implement LibraryManager.parseArgument
 		throw new UnsupportedOperationException();
 	}
 
-	private void register(String[] arguments) {
-		System.out.print("testing register");
-	}
+
 
 
 
