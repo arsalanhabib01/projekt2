@@ -8,6 +8,7 @@ public class LibraryManager {
 
 	private IntLib library;
 	private static final String libPath = "library.csv";
+	boolean running;
 
 	private enum Command {
 		LIST,
@@ -45,12 +46,13 @@ public class LibraryManager {
 
 	public void start() {
 		Scanner scanner = new Scanner(System.in);
-		boolean running = true;
+		running = true;
+
+		while (running) {
 
 		String userInput = scanner.nextLine();
 		Command commandString = parseCommand(userInput);
 
-		while (running) {
 			switch (commandString) {
 				case LIST:
 					break;
@@ -67,7 +69,9 @@ public class LibraryManager {
 					break;
 
 				case QUIT:
+					quitCommand();
 					break;
+
 				default:
 					break;
 			}
@@ -76,7 +80,14 @@ public class LibraryManager {
 		scanner.close();
 	}
 
+	private void quitCommand() {
+		running = false;
+		System.out.print("Exiting.");
+		System.exit(0);
+	}
+
 	public static Command parseCommand(String userInput) {
+		//try & catch!
 		String commandString = userInput.split(" ")[0].toUpperCase();
 		return Command.valueOf(commandString);
 
