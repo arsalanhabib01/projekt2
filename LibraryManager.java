@@ -138,41 +138,51 @@ public class LibraryManager {
 
 	private static void checkinCommand(String[] argument) {
 
-		String str = argument[0];
-		int count = 0;
-		for (int i = 0 ; i < str.length(); i++)
-		{
-			char ch = str.charAt(i);
-			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch<= 'z')
-				count++;
-		}
-		if(count == 0)
-			System.out.println("testing Checkin " + argument[0]);
-		else
-			System.out.println("Cannot Checkin Id must be a number" );
+
+			String str = argument[0];
+			int count = 0;
+			for (int i = 0; i < str.length(); i++) {
+				char ch = str.charAt(i);
+				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
+					count++;
+			}
+			if (count == 0)
+				System.out.println("testing checkin " + argument[0]);
+			else
+				System.out.println("Cannot checkin Id must be a number");
+
 	}
 
 	private static void registerCommand() {
+		try {
 			System.out.println("What are you registering? Book (b), Movie (m) ");
-		Scanner sc = new Scanner(System.in);
-		// Character input
-		char c = sc.next().charAt(0);
-		if(c == 'm') {
-			// call here class movie
-			System.out.println("test movie");
-		}else if (c == 'b') {
-			// call here class book
-			System.out.println("test book");
-		}else
-			System.out.println("unknown character");
-
+			Scanner sc = new Scanner(System.in);
+			// Character input
+			char c = sc.next().charAt(0);
+			if (c == 'm') {
+				// call here class movie
+				System.out.println("test movie");
+			} else if (c == 'b') {
+				// call here class book
+				System.out.println("test book");
+			} else
+				System.out.println("unknown character");
+		}catch (ArrayIndexOutOfBoundsException aibe) {
+			System.out.println("Missing valid Id number");
+			return;
+		}
 
 	}
 
 
 	private static void deregisterCommand(String[] argument) {
 
-		System.out.println("Successfully deregistered " + argument[0]);
+		try {
+			System.out.println("Successfully deregistered " + argument[0]);
+		} catch (ArrayIndexOutOfBoundsException aibe) {
+			System.out.println("Missing valid Id number");
+			return;
+		}
 	}
 
 
