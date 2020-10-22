@@ -40,7 +40,8 @@ public class Library implements IntLib {
 		System.out.println("Enter product ID: ");
 		System.out.print("> ");
 		bok.setId(sc.nextInt());
-		//System.out.println(bok.getId());
+		// here our program can check in the file if the id is already exist
+		
 		System.out.println("Enter title: "  );
 		System.out.print("> ");
 		bok.setTitle(sc.next());
