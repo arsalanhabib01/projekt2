@@ -51,10 +51,10 @@ public class LibraryManager {
 		while (running) {
 
 		String userInput = scanner.nextLine();
-		//if()
 		Command commandString = parseCommand(userInput);
 
-		String[] arguments = parseArguments(userInput);
+
+			String[] arguments = parseArguments(userInput);
 			switch (commandString) {
 				case LIST:
 					break;
@@ -75,8 +75,13 @@ public class LibraryManager {
 					quitCommand();
 					break;
 
+				case UNKNOWN:
+					System.out.println("Unknown Command");
+					continue;
+
 				default:
-					break;
+					System.out.println("Unknown Command");
+					continue;
 			}
 
 		}
@@ -96,12 +101,6 @@ public class LibraryManager {
 
 	}
 
-//	public static Command parseArguments(String userInput)
-//	{
-//		String argument = userInput.split(" ")[1];
-//		return Command.valueOf(argument);
-//	}
-
 	private String[] parseArguments(String userInput) {
 		String[] arguments = userInput.split(" ");
 		String[] arguments2 = new String[arguments.length-1];
@@ -112,10 +111,19 @@ public class LibraryManager {
 	}
 
 	private static void registerCommand(String[] argument) {
-		//parseArguments(argument);
-		//String commandString = argument.split(" ")[1];
-	//	int runtime = Integer.parseString(argument);
-		System.out.println("testing register " + argument[0]);
+
+		String str = argument[0];
+		int count = 0;
+		for (int i = 0 ; i < str.length(); i++)
+		{
+			char ch = str.charAt(i);
+			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch<= 'z')
+				count++;
+		}
+		if(count == 0)
+			System.out.println("testing register " + argument[0]);
+		else
+			System.out.println("Cannot Register must be a number" );
 	}
 
 	private static void deregisterCommand(String[] argument) {
