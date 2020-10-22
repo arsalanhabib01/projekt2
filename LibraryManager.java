@@ -35,7 +35,7 @@ public class LibraryManager {
 
 
 	public void start() {
-		System.out.print("Hello hello");
+		System.out.print("Hello hello hello");
 	}
 
 
