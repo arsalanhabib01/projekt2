@@ -166,16 +166,19 @@ public class LibraryManager {
 
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
+			char c;
 			// Character input
-			char c = sc.next().charAt(0);
-			if (c == 'm') {
-				// call here class movie
-				System.out.println("test movie");
-			} else if (c == 'b') {
-				// call here class book
-				System.out.println("test book");
-			} else
-				System.out.println("unknown character");
+			c = sc.next().charAt(0);
+				if (c == 'm') {
+					// call here class movie
+					System.out.println("test movie");
+				} else if (c == 'b') {
+					// call here class book
+					System.out.println("test book");
+				} else {
+					System.out.println("unknown character");
+					registerCommand();
+				}
 
 	}
 
