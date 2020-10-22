@@ -118,18 +118,22 @@ public class LibraryManager {
 
 	private static void checkoutCommand(String[] argument) {
 
-		String str = argument[0];
-		int count = 0;
-		for (int i = 0 ; i < str.length(); i++)
-		{
-			char ch = str.charAt(i);
-			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch<= 'z')
-				count++;
+		try {
+			String str = argument[0];
+			int count = 0;
+			for (int i = 0; i < str.length(); i++) {
+				char ch = str.charAt(i);
+				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
+					count++;
+			}
+			if (count == 0)
+				System.out.println("testing checkout " + argument[0]);
+			else
+				System.out.println("Cannot checkout Id must be a number");
+		} catch (ArrayIndexOutOfBoundsException aibe) {
+			System.out.println("Missing valid Id number");
+			return;
 		}
-		if(count == 0)
-			System.out.println("testing checkout " + argument[0]);
-		else
-			System.out.println("Cannot checkout Id must be a number" );
 	}
 
 	private static void checkinCommand(String[] argument) {
