@@ -15,6 +15,9 @@ public class Book {
 		this.pages = pages;
 		this.publisher = publisher;
 	}
+	public Book(){
+		super();
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -23,10 +26,31 @@ public class Book {
 	public int getId() {
 		return id;
 	}
-	//public void getId(){
-	//	this.id = id;
-	//}
-	
+
+	public void setTitle(String title) { this.title = title; }
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setValue(int value) { this.value = value; }
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setPages(int pages) { this.pages = pages; }
+
+	public int getPages() {
+		return pages;
+	}
+
+	public void setPublisher(String publisher) { this.publisher = publisher; }
+
+	public String getPublisher() {
+		return publisher;
+	}
+
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + "(in stock)";
