@@ -145,28 +145,15 @@ public class LibraryManager {
 	}
 
 	private static void registerCommand() {
-			System.out.println("testing register ");
+			System.out.println("What are you registering? Book (b), Movie (m) ");
 
 	}
 
 
 	private static void deregisterCommand(String[] argument) {
 
-		System.out.println("testing de-register " + argument[0]);
+		System.out.println("Successfully deregistered " + argument[0]);
 	}
-
-	//private static void registerCommand() {
-		//System.out.print("testing register");
-//	}
-
-
-	public void parseArgument(String[] userInput) {
-		// TODO - implement LibraryManager.parseArgument
-		throw new UnsupportedOperationException();
-	}
-
-
-
 
 
 }
