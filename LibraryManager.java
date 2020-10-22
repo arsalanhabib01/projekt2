@@ -163,7 +163,7 @@ public class LibraryManager {
 	}
 
 	private static void registerCommand() {
-
+		LibraryManager manager = new LibraryManager(libPath); //not sure this is right
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
 			char c;
@@ -174,6 +174,7 @@ public class LibraryManager {
 					System.out.println("test movie");
 				} else if (c == 'b') {
 					// call here class book
+					manager.library.register();
 					System.out.println("test book");
 				} else {
 					System.out.println("unknown character");
