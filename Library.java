@@ -41,10 +41,12 @@ public class Library implements IntLib {
 		System.out.print("> ");
 		bok.setId(sc.nextInt());
 		// here our program can check in the file if the id is already exist
-		
+
+		Scanner st = new Scanner(System.in);
 		System.out.println("Enter title: "  );
 		System.out.print("> ");
-		bok.setTitle(sc.next());
+		//sc.next();
+		bok.setTitle(st.nextLine());
 		//System.out.println(bok.getTitle());
 		System.out.println("Enter Value: "  );
 		System.out.print("> ");
@@ -56,9 +58,12 @@ public class Library implements IntLib {
 		//System.out.println(bok.getPages());
 		System.out.println("Enter Publisher Name: "  );
 		System.out.print("> ");
-		bok.setPublisher(sc.next());
+		Scanner sp = new Scanner(System.in);
+		bok.setPublisher(sp.nextLine());
 		//System.out.println(bok.getPublisher());
-		System.out.println(bok.toString());
+		//System.out.println(bok.toString());
+		allProducts.add(bok);
+		System.out.println(allProducts);
 
 
 
