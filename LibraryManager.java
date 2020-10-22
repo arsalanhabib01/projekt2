@@ -89,7 +89,10 @@ public class LibraryManager {
 		} catch (IllegalArgumentException iae){
 			System.out.println(iae.getMessage());
 			start();
-			}
+			}catch (ArrayIndexOutOfBoundsException aibe){
+				System.out.println("Missing valid Id number");
+				continue;
+		}
 		}
 		scanner.close();
 	}
@@ -118,7 +121,7 @@ public class LibraryManager {
 
 	private static void checkoutCommand(String[] argument) {
 
-		try {
+
 			String str = argument[0];
 			int count = 0;
 			for (int i = 0; i < str.length(); i++) {
@@ -130,10 +133,7 @@ public class LibraryManager {
 				System.out.println("testing checkout " + argument[0]);
 			else
 				System.out.println("Cannot checkout Id must be a number");
-		} catch (ArrayIndexOutOfBoundsException aibe) {
-			System.out.println("Missing valid Id number");
-			return;
-		}
+
 	}
 
 	private static void checkinCommand(String[] argument) {
@@ -154,7 +154,7 @@ public class LibraryManager {
 	}
 
 	private static void registerCommand() {
-		try {
+
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
 			// Character input
@@ -167,22 +167,14 @@ public class LibraryManager {
 				System.out.println("test book");
 			} else
 				System.out.println("unknown character");
-		}catch (ArrayIndexOutOfBoundsException aibe) {
-			System.out.println("Missing valid Id number");
-			return;
-		}
 
 	}
 
 
 	private static void deregisterCommand(String[] argument) {
 
-		try {
-			System.out.println("Successfully deregistered " + argument[0]);
-		} catch (ArrayIndexOutOfBoundsException aibe) {
-			System.out.println("Missing valid Id number");
-			return;
-		}
+		System.out.println("Successfully deregistered " + argument[0]);
+
 	}
 
 
