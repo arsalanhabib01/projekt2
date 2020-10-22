@@ -10,7 +10,6 @@ public class LibraryManager {
 	private static final String libPath = "library.csv";
 	boolean running;
 
-
 	private enum Command {
 		LIST,
 		CHECKOUT,
@@ -28,6 +27,7 @@ public class LibraryManager {
 
 		Book bok1 = new Book(1, "Harry Potter", 302, 203, "JK. Rolling");
 		System.out.println( bok1.toString()) ;
+
 
 
 	}
@@ -163,20 +163,22 @@ public class LibraryManager {
 	}
 
 	private static void registerCommand() {
-		LibraryManager manager = new LibraryManager(libPath);
+
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
+			char c;
 			// Character input
-			char c = sc.next().charAt(0);
-			if (c == 'm') {
-				// call here class movie
-				System.out.println("test movie");
-			} else if (c == 'b') {
-				// call here class book
-				manager.library.register();
-				System.out.println("test book");
-			} else
-				System.out.println("unknown character");
+			c = sc.next().charAt(0);
+				if (c == 'm') {
+					// call here class movie
+					System.out.println("test movie");
+				} else if (c == 'b') {
+					// call here class book
+					System.out.println("test book");
+				} else {
+					System.out.println("unknown character");
+					registerCommand();
+				}
 
 	}
 
