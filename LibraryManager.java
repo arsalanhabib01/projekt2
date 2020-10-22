@@ -123,15 +123,19 @@ public class LibraryManager {
 
 
 			String str = argument[0];
-			int count = 0;
+			int count = 0, Number = 0;
 			for (int i = 0; i < str.length(); i++) {
 				char ch = str.charAt(i);
 				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
 					count++;
 			}
-			if (count == 0)
-				System.out.println("testing checkout " + argument[0]);
-			else
+			if (count == 0){
+				Number = Integer.parseInt(argument[0]);
+				if(Number < 0)
+					System.out.println("negative number invalid");
+				else
+					System.out.println("testing checkout " + argument[0]);
+			}else
 				System.out.println("Cannot checkout Id must be a number");
 
 	}
@@ -140,16 +144,20 @@ public class LibraryManager {
 
 
 			String str = argument[0];
-			int count = 0;
+			int count = 0, Number = 0;
 			for (int i = 0; i < str.length(); i++) {
 				char ch = str.charAt(i);
 				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
 					count++;
 			}
-			if (count == 0)
-				System.out.println("testing checkin " + argument[0]);
+		if (count == 0){
+			Number = Integer.parseInt(argument[0]);
+			if(Number < 0)
+				System.out.println("negative number invalid");
 			else
-				System.out.println("Cannot checkin Id must be a number");
+				System.out.println("testing checkin " + argument[0]);
+		}else
+			System.out.println("Cannot checkin Id must be a number");
 
 	}
 
