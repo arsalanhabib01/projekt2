@@ -1,5 +1,6 @@
-public class Movie {
-
+import java.io.*;
+public class Movie implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String title;
 	private int value;

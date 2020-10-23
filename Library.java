@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -101,7 +101,41 @@ public class Library implements IntLib {
 			//System.out.println(bok.toString());
 			allProducts.add(movie);
 			System.out.println(Arrays.asList(allProducts));
+			writeRecord(allProducts);
 		}
+
+
+	}
+	public void writeRecord(LinkedList<Object> allProducts ){
+
+		try{
+			FileOutputStream fos = new FileOutputStream(libPath);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			//Movie movie = new Movie();
+			LinkedList object= allProducts;
+			oos.writeObject(object);
+			fos.flush();
+			oos.flush();
+		}catch (FileNotFoundException e){
+			System.out.println(e);
+		}catch (IOException e){
+			System.out.println(e);
+		}
+		//objFilePath ="mySerializedThing.bin";
+		try {
+			FileInputStream fin = new FileInputStream(libPath);
+			ObjectInputStream oin = new ObjectInputStream(fin);
+			Movie movie = (Movie) oin.readObject();
+			oin.close();
+			System.out.println(movie);
+		}catch (FileNotFoundException e){
+			System.out.println(e);
+		}catch (IOException e){
+			System.out.println(e);
+		}catch (ClassNotFoundException e){
+			System.out.println(e);
+		}
+
 
 
 	}

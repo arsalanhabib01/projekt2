@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class LibraryManager {
 
 	private IntLib library;
-	private static final String libPath = "library.csv";
+	private static final String libPath = "library.bin";
 	boolean running;
 
 	public static void setBook(boolean book) {
