@@ -32,37 +32,77 @@ public class Library implements IntLib {
 
 	@Override
 	public void register() {
-		//Book bok2 = new Book(2, "The Island", 299, 233, "Huxley");
-	//	allProducts.add(bok2);
-	//	System.out.println(allProducts);
-		Scanner sc = new Scanner(System.in);
-		Book bok = new Book();
-		System.out.println("Enter product ID: ");
-		System.out.print("> ");
-		bok.setId(sc.nextInt());
-		// here our program can check in the file if the id is already exist
 
-		Scanner st = new Scanner(System.in);
-		System.out.println("Enter title: "  );
-		System.out.print("> ");
-		bok.setTitle(st.nextLine());
-		//System.out.println(bok.getTitle());
-		System.out.println("Enter Value: "  );
-		System.out.print("> ");
-		bok.setValue(sc.nextInt());
-		//System.out.println(bok.getValue());
-		System.out.println("Enter Pages: "  );
-		System.out.print("> ");
-		bok.setPages(sc.nextInt());
-		//System.out.println(bok.getPages());
-		System.out.println("Enter Publisher Name: "  );
-		System.out.print("> ");
-		Scanner sp = new Scanner(System.in);
-		bok.setPublisher(sp.nextLine());
-		//System.out.println(bok.getPublisher());
-		//System.out.println(bok.toString());
-		allProducts.add(bok);
-		System.out.println(Arrays.asList(allProducts));
+		if (LibraryManager.isBook()) {
+
+			//Book bok2 = new Book(2, "The Island", 299, 233, "Huxley");
+			//	allProducts.add(bok2);
+			//	System.out.println(allProducts);
+			Scanner sc = new Scanner(System.in);
+			Book bok = new Book();
+			System.out.println("Enter product ID: ");
+			System.out.print("> ");
+			bok.setId(sc.nextInt());
+			// here our program can check in the file if the id is already exist
+
+			Scanner st = new Scanner(System.in);
+			System.out.println("Enter Title: ");
+			System.out.print("> ");
+			bok.setTitle(st.nextLine());
+			//System.out.println(bok.getTitle());
+			System.out.println("Enter Value: ");
+			System.out.print("> ");
+			bok.setValue(sc.nextInt());
+			//System.out.println(bok.getValue());
+			System.out.println("Enter Pages: ");
+			System.out.print("> ");
+			bok.setPages(sc.nextInt());
+			//System.out.println(bok.getPages());
+			System.out.println("Enter Publisher Name: ");
+			System.out.print("> ");
+			Scanner sp = new Scanner(System.in);
+			bok.setPublisher(sp.nextLine());
+			//System.out.println(bok.getPublisher());
+			//System.out.println(bok.toString());
+			allProducts.add(bok);
+			System.out.println(Arrays.asList(allProducts));
+		}
+
+		else if (LibraryManager.isMovie()) {
+
+			//Book bok2 = new Book(2, "The Island", 299, 233, "Huxley");
+			//	allProducts.add(bok2);
+			//	System.out.println(allProducts);
+			Scanner sc = new Scanner(System.in);
+			Movie movie = new Movie();
+			System.out.println("Enter product ID: ");
+			System.out.print("> ");
+			movie.setId(sc.nextInt());
+			// here our program can check in the file if the id is already exist
+
+			Scanner st = new Scanner(System.in);
+			System.out.println("Enter Title: ");
+			System.out.print("> ");
+			movie.setTitle(st.nextLine());
+			//System.out.println(bok.getTitle());
+			System.out.println("Enter Value: ");
+			System.out.print("> ");
+			movie.setValue(sc.nextInt());
+			//System.out.println(bok.getValue());
+			System.out.println("Enter Length: ");
+			System.out.print("> ");
+			movie.setLength(sc.nextInt());
+			//System.out.println(bok.getPages());
+			System.out.println("Enter IMDB rating: ");
+			System.out.print("> ");
+			Scanner sp = new Scanner(System.in);
+			movie.setRating(sp.nextFloat());
+			//System.out.println(bok.getPublisher());
+			//System.out.println(bok.toString());
+			allProducts.add(movie);
+			System.out.println(Arrays.asList(allProducts));
+		}
+
 
 	}
 

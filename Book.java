@@ -15,6 +15,7 @@ public class Book {
 		this.pages = pages;
 		this.publisher = publisher;
 	}
+
 	public Book(){
 		super();
 	}
