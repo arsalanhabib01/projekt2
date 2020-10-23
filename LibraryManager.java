@@ -46,14 +46,8 @@ public class LibraryManager {
 		System.out.println();
 		System.out.println("Current inventory:\n");
 		// read file the current inventory from here
-		
+		System.out.print("> ");
 		manager.start();
-
-	//	Book bok1 = new Book(1, "Harry Potter", 302, 203, "JK. Rolling");
-	//	System.out.println( bok1.toString()) ;
-
-
-
 	}
 
 	public LibraryManager (String libPath) {
@@ -77,12 +71,16 @@ public class LibraryManager {
 		String userInput = scanner.nextLine();
 
 		try {
-		Command commandString = parseCommand(userInput);
+			Command commandString = parseCommand(userInput);
 
 			String[] arguments = parseArguments(userInput);
 			switch (commandString) {
 				case LIST:
-					listCommand();
+					if(arguments.length <= 0)
+						listCommand();
+					else {
+						System.out.println("Illegal Argument");
+						continue; }
 					break;
 				case CHECKOUT:
 					checkoutCommand(arguments);
@@ -91,18 +89,24 @@ public class LibraryManager {
 					checkinCommand(arguments);
 					break;
 				case REGISTER:
-					registerCommand();
+					if(arguments.length <= 0)
+						registerCommand();
+					else{
+						System.out.println("Illegal Argument");
+						continue;}
 					break;
 				case DEREGISTER:
 					deregisterCommand(arguments);
 					break;
 				case INFO:
 					break;
-
 				case QUIT:
-					quitCommand();
+					if(arguments.length <= 0)
+						quitCommand();
+					else{
+						System.out.println("Illegal Argument");
+						continue;}
 					break;
-
 				case UNKNOWN:
 					System.out.println("Unknown Command");
 					continue;
@@ -111,11 +115,11 @@ public class LibraryManager {
 					System.out.println("Unknown Command");
 					continue;
 			}
-		} catch (IllegalArgumentException iae){
-			System.out.println(iae.getMessage());
+		} catch (IllegalArgumentException e){
+			System.out.println("Illegal Argument");
 			start();
-			}catch (ArrayIndexOutOfBoundsException aibe){
-				System.out.println("Missing valid Id number");
+			}catch (ArrayIndexOutOfBoundsException e){
+				System.out.println("Missing Argument");
 				continue;
 		}
 		}
@@ -146,7 +150,6 @@ public class LibraryManager {
 
 	private static void checkoutCommand(String[] argument) {
 
-
 			String str = argument[0];
 			int count = 0, Number = 0;
 			for (int i = 0; i < str.length(); i++) {
@@ -157,16 +160,15 @@ public class LibraryManager {
 			if (count == 0){
 				Number = Integer.parseInt(argument[0]);
 				if(Number < 0)
-					System.out.println("negative number invalid");
+					System.out.println("Invalid Argument: Negative Numbers");
 				else
 					System.out.println("testing checkout " + argument[0]);
 			}else
-				System.out.println("Cannot checkout Id must be a number");
+				System.out.println("Invalid Argument: Characters");
 
 	}
 
 	private static void checkinCommand(String[] argument) {
-
 
 			String str = argument[0];
 			int count = 0, Number = 0;
@@ -178,23 +180,22 @@ public class LibraryManager {
 		if (count == 0){
 			Number = Integer.parseInt(argument[0]);
 			if(Number < 0)
-				System.out.println("negative number invalid");
+				System.out.println("Invalid Argument: Negative Numbers");
 			else
 				System.out.println("testing checkin " + argument[0]);
 		}else
-			System.out.println("Cannot checkin Id must be a number");
+			System.out.println("Invalid Argument: Characters");
 
 	}
 
 
 
 	private void registerCommand() {
+
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
 			char c;
-			
-			
-			
+
 			// Character input
 			c = sc.next().charAt(0);
 				if (c == 'm') {
@@ -218,9 +219,24 @@ public class LibraryManager {
 
 
 	private void deregisterCommand(String[] argument) {
-		this.library.deregister();
-		System.out.println("Successfully deregistered " + argument[0]);
 
+		String str = argument[0];
+		int count = 0, Number = 0;
+		for (int i = 0; i < str.length(); i++) {
+			char ch = str.charAt(i);
+			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
+				count++;
+		}
+		if (count == 0){
+			Number = Integer.parseInt(argument[0]);
+			if(Number < 0)
+				System.out.println("Invalid Argument: Negative Numbers");
+			else {
+				this.library.deregister();
+				System.out.println("Successfully deregistered " + argument[0]);
+			}
+		}else
+			System.out.println("Invalid Argument: Characters");
 	}
 
 	private void listCommand() {
