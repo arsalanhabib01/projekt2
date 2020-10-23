@@ -220,8 +220,8 @@ public class LibraryManager {
 	}
 
 	private static void listCommand() {
-
 	LinkedList<Object> allProducts = new LinkedList<Object>(Arrays.asList()); //working on this
+
 		System.out.println("Command to get all books");
 
 	}

@@ -101,19 +101,19 @@ public class Library implements IntLib {
 			//System.out.println(bok.toString());
 			allProducts.add(movie);
 			System.out.println(Arrays.asList(allProducts));
-			writeRecord(allProducts);
+			writeRecord(movie);
 		}
 
 
 	}
-	public void writeRecord(LinkedList<Object> allProducts ){
+	public void writeRecord(Movie movie){//LinkedList<Object> allProducts ){
 
 		try{
 			FileOutputStream fos = new FileOutputStream(libPath);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			//Movie movie = new Movie();
-			LinkedList object= allProducts;
-			oos.writeObject(object);
+			//LinkedList object= allProducts;
+			oos.writeObject(movie);
 			fos.flush();
 			oos.flush();
 		}catch (FileNotFoundException e){
@@ -125,9 +125,10 @@ public class Library implements IntLib {
 		try {
 			FileInputStream fin = new FileInputStream(libPath);
 			ObjectInputStream oin = new ObjectInputStream(fin);
-			Movie movie = (Movie) oin.readObject();
-			oin.close();
-			System.out.println(movie);
+
+			Movie movie1 = (Movie) oin.readObject();
+			//oin.flush();
+			System.out.println(movie1.toString());
 		}catch (FileNotFoundException e){
 			System.out.println(e);
 		}catch (IOException e){
