@@ -42,10 +42,15 @@ public class LibraryManager {
 
 	public static void main(String[] args) {
 		LibraryManager manager = new LibraryManager(libPath);
+		System.out.println("> java LibrarySystem\nWelcome!\nSuccesfully initialized system state from file(s).");
+		System.out.println();
+		System.out.println("Current inventory:\n");
+		// read file the current inventory from here
+		
 		manager.start();
 
-		Book bok1 = new Book(1, "Harry Potter", 302, 203, "JK. Rolling");
-		System.out.println( bok1.toString()) ;
+	//	Book bok1 = new Book(1, "Harry Potter", 302, 203, "JK. Rolling");
+	//	System.out.println( bok1.toString()) ;
 
 
 
@@ -212,8 +217,8 @@ public class LibraryManager {
 	}
 
 
-	private static void deregisterCommand(String[] argument) {
-
+	private void deregisterCommand(String[] argument) {
+		this.library.deregister();
 		System.out.println("Successfully deregistered " + argument[0]);
 
 	}

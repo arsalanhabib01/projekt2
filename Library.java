@@ -151,6 +151,6 @@ public class Library implements IntLib {
 	@Override
 	public void list() {
 		writeRecord(allProducts);
-		System.out.println(allProducts);
+		//System.out.println(allProducts);
 	}
 }
