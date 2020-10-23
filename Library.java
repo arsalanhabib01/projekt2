@@ -145,11 +145,12 @@ public class Library implements IntLib {
 
 	@Override
 	public void deregister() {
-
+		writeRecord(allProducts);
 	}
 
 	@Override
 	public void list() {
+		writeRecord(allProducts);
 		System.out.println(allProducts);
 	}
 }
