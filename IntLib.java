@@ -4,4 +4,6 @@ public interface IntLib {
 
 	void deregister();
 
+	void list();
+
 }

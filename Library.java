@@ -147,4 +147,9 @@ public class Library implements IntLib {
 	public void deregister() {
 
 	}
+
+	@Override
+	public void list() {
+		System.out.println(allProducts);
+	}
 }

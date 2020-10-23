@@ -183,8 +183,7 @@ public class LibraryManager {
 
 
 
-	private static void registerCommand() {
-		LibraryManager manager = new LibraryManager(libPath); //not sure this is right
+	private void registerCommand() {
 			System.out.println("What are you registering? Book (b), Movie (m) ");
 			Scanner sc = new Scanner(System.in);
 			char c;
@@ -198,13 +197,13 @@ public class LibraryManager {
 					setBook(false);
 					// call here class movie
 					System.out.println("test movie" + movie);
-					manager.library.register();
+					this.library.register();
 				} else if (c == 'b') {
 					setMovie(false);
 					setBook(true);
 					System.out.println("test book" + book);
 					// call here class book
-					manager.library.register();
+					this.library.register();
 				} else {
 					System.out.println("unknown character");
 					registerCommand();
@@ -219,9 +218,8 @@ public class LibraryManager {
 
 	}
 
-	private static void listCommand() {
-	LinkedList<Object> allProducts = new LinkedList<Object>(Arrays.asList()); //working on this
-
+	private void listCommand() {
+		this.library.list();
 		System.out.println("Command to get all books");
 
 	}
