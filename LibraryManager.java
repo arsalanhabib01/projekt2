@@ -43,8 +43,7 @@ public class LibraryManager {
 	public static void main(String[] args) {
 		LibraryManager manager = new LibraryManager(libPath);
 		System.out.println("> java LibrarySystem\nWelcome!\nSuccesfully initialized system state from file(s).");
-		System.out.println();
-		System.out.println("Current inventory:\n");
+		System.out.println("\nCurrent inventory:");
 		// read file the current inventory from here
 
 		manager.start();
@@ -99,11 +98,7 @@ public class LibraryManager {
 					deregisterCommand(arguments);
 					break;
 				case INFO:
-					if(arguments.length <= 0)
-						infoCommand();
-					else{
-						System.out.println("Illegal Arugment");
-						continue;}
+					infoCommand(arguments);
 					break;
 				case QUIT:
 					if(arguments.length <= 0)
@@ -201,7 +196,7 @@ public class LibraryManager {
 
 	private void registerCommand() {
 
-			System.out.println("What are you registering? Book (b), Movie (m) ");
+			System.out.print("\nWhat are you registering? Book (b), Movie (m)\n> ");
 			Scanner sc = new Scanner(System.in);
 			char c;
 
@@ -255,9 +250,28 @@ public class LibraryManager {
 		System.out.println("Command to get all books");
 
 	}
-	private void infoCommand(){
-		this.library.info();
-		System.out.println("Library Information");
+	private void infoCommand(String[] argument){
+
+		String str = argument[0];
+		int count = 0, Number = 0;
+		for (int i = 0; i < str.length(); i++) {
+			char ch = str.charAt(i);
+			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
+				count++;
+		}
+		if (count == 0){
+			Number = Integer.parseInt(argument[0]);
+			System.out.println(Number);
+			if(Number < 0)
+				System.out.println("Invalid Argument: Negative Numbers");
+			else {
+				System.out.println(Number);//this number will check if it is already exist
+				this.library.info();
+				System.out.println("Library Information " + argument[0]);
+			}
+		}else
+			System.out.println("Invalid Argument: Characters");
+
 	}
 
 
