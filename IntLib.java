@@ -6,4 +6,6 @@ public interface IntLib {
 
 	void list();
 
+	void info();
+
 }

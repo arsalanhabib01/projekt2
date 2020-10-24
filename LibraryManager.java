@@ -46,7 +46,7 @@ public class LibraryManager {
 		System.out.println();
 		System.out.println("Current inventory:\n");
 		// read file the current inventory from here
-		System.out.print("> ");
+
 		manager.start();
 	}
 
@@ -67,8 +67,8 @@ public class LibraryManager {
 		running = true;
 
 		while (running) {
-
-		String userInput = scanner.nextLine();
+			System.out.print("> ");
+			String userInput = scanner.nextLine();
 
 		try {
 			Command commandString = parseCommand(userInput);
@@ -99,6 +99,11 @@ public class LibraryManager {
 					deregisterCommand(arguments);
 					break;
 				case INFO:
+					if(arguments.length <= 0)
+						infoCommand();
+					else{
+						System.out.println("Illegal Arugment");
+						continue;}
 					break;
 				case QUIT:
 					if(arguments.length <= 0)
@@ -111,12 +116,12 @@ public class LibraryManager {
 					System.out.println("Unknown Command");
 					continue;
 
-				default:
-					System.out.println("Unknown Command");
-					continue;
+			//	default:
+			//		System.out.println("Unknown Command");
+			//		continue;
 			}
 		} catch (IllegalArgumentException e){
-			System.out.println("Illegal Argument");
+			System.out.println("Illegal Command");
 			start();
 			}catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Missing Argument");
@@ -161,8 +166,10 @@ public class LibraryManager {
 				Number = Integer.parseInt(argument[0]);
 				if(Number < 0)
 					System.out.println("Invalid Argument: Negative Numbers");
-				else
+				else {
+					System.out.println(Number);//this number will check if it is already exist
 					System.out.println("testing checkout " + argument[0]);
+				}
 			}else
 				System.out.println("Invalid Argument: Characters");
 
@@ -181,8 +188,10 @@ public class LibraryManager {
 			Number = Integer.parseInt(argument[0]);
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else
+			else{
+				System.out.println(Number);//this number will check if it is already exist
 				System.out.println("testing checkin " + argument[0]);
+			}
 		}else
 			System.out.println("Invalid Argument: Characters");
 
@@ -229,9 +238,11 @@ public class LibraryManager {
 		}
 		if (count == 0){
 			Number = Integer.parseInt(argument[0]);
+			System.out.println(Number);
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
 			else {
+				System.out.println(Number);//this number will check if it is already exist
 				this.library.deregister();
 				System.out.println("Successfully deregistered " + argument[0]);
 			}
@@ -243,6 +254,10 @@ public class LibraryManager {
 		this.library.list();
 		System.out.println("Command to get all books");
 
+	}
+	private void infoCommand(){
+		this.library.info();
+		System.out.println("Library Information");
 	}
 
 

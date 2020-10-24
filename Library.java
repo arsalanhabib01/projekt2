@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -40,6 +41,8 @@ public class Library implements IntLib {
 			//	System.out.println(allProducts);
 			Scanner sc = new Scanner(System.in);
 			Book bok = new Book();
+
+			try{
 			System.out.println("Enter product ID: ");
 			System.out.print("> ");
 			bok.setId(sc.nextInt());
@@ -67,6 +70,12 @@ public class Library implements IntLib {
 			allProducts.add(bok);
 			System.out.println(Arrays.asList(allProducts));
 			writeRecord(bok);
+
+			} catch (InputMismatchException e){
+				System.out.println("Invalid Input : "+e);
+				System.out.println("Register the Book Again :");
+				register();
+			}
 		}
 
 		else if (LibraryManager.isMovie()) {
@@ -76,9 +85,11 @@ public class Library implements IntLib {
 			//	System.out.println(allProducts);
 			Scanner sc = new Scanner(System.in);
 			Movie movie = new Movie();
+			try{
 			System.out.println("Enter product ID: ");
 			System.out.print("> ");
 			movie.setId(sc.nextInt());
+
 			// here our program can check in the file if the id is already exist
 
 			Scanner st = new Scanner(System.in);
@@ -103,6 +114,12 @@ public class Library implements IntLib {
 			allProducts.add(movie);
 			System.out.println(Arrays.asList(allProducts));
 			writeRecord(movie);
+
+			} catch (InputMismatchException e){
+				System.out.println("Invalid Input : "+e);
+				System.out.println("Register the Movie Again :");
+				register();
+			}
 		}
 
 
@@ -122,7 +139,7 @@ public class Library implements IntLib {
 		}catch (IOException e){
 			System.out.println(e);
 		}
-		//objFilePath ="mySerializedThing.bin";
+		//objFilePath ="mySerializedlibrary.bin";
 		try {
 			FileInputStream fin = new FileInputStream(libPath);
 			ObjectInputStream oin = new ObjectInputStream(fin);
@@ -138,9 +155,6 @@ public class Library implements IntLib {
 		}catch (ClassNotFoundException e){
 			System.out.println(e);
 		}
-
-
-
 	}
 
 	@Override
@@ -152,5 +166,10 @@ public class Library implements IntLib {
 	public void list() {
 		writeRecord(allProducts);
 		//System.out.println(allProducts);
+	}
+
+	@Override
+	public void info(){
+		writeRecord(allProducts);
 	}
 }
