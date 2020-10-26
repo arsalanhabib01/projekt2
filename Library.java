@@ -194,17 +194,19 @@ public class Library implements IntLib {
 	@Override
 	public void deregister(String[] argument) {
 		int input = Integer.parseInt(argument[0]);
+		int count = 0;
 		for (int i = 0; i < allProducts.size(); i++) {
-			if(input == allProducts.get(i).getId()) {
+			if (input == allProducts.get(i).getId()) {
 				//need to show the title here
-				System.out.println("Successfully deregistered " +allProducts.get(i).getId());
+				System.out.println("Successfully deregistered " + allProducts.get(i).getId());
 				allProducts.remove(i);
-				break;
+				count++;
 			}
-			else
-				System.out.println("Error: No product with id "+argument[0]+" registered.");
 		}
-
+		if (count == 0)
+				System.out.println("Error: No product with id "+argument[0]+" registered.");
+		else
+			count = 0;
 
 	}
 
@@ -218,15 +220,17 @@ public class Library implements IntLib {
 	@Override
 	public void info(String[] argument) {
 		int input = Integer.parseInt(argument[0]);
+		int count = 0;
 		for (int i = 0; i < allProducts.size(); i++) {
-			if(input == allProducts.get(i).getId()) {
+			if(input == allProducts.get(i).getId()){
 				//need to show the update method here
 				System.out.println(allProducts.get(i).toString());
-				//allProducts.remove(i);
+				count++;
 			}
-			else
-				System.out.println("Error: No product with id "+argument[0]+" registered.");
 		}
-
+		if(count == 0)
+				System.out.println("Error: No product with id "+argument[0]+" registered.");
+		else
+			count = 0;
 		}
 }

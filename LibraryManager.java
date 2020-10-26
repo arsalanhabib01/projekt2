@@ -227,7 +227,7 @@ public class LibraryManager {
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
 			else {
-				System.out.println(Number);//this number will check if it is already exist
+			//	System.out.println(Number);//this number will check if it is already exist
 
 				this.library.deregister(argument);
 				//System.out.println("Successfully deregistered " + argument[0]);
@@ -251,14 +251,14 @@ public class LibraryManager {
 		if (counter == 0){
 			Number = Integer.parseInt(argument[0]);
 			counter = 0;
-			System.out.println(Number);
+			//System.out.println(Number);
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
 			else {
 				//	System.out.println(Number);//this number will check if it is already exist
 
 				this.library.info(argument);
-				System.out.println("Library Information " + argument[0]);
+				//System.out.println("Library Information " + argument[0]);
 			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
@@ -293,10 +293,8 @@ public class LibraryManager {
 	}
 
 	private void listCommand() {
-
-
 		this.library.list();
-		System.out.println("Command to get all books");
+		//System.out.println("Command to get all books");
 
 	}
 
