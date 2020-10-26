@@ -1,5 +1,5 @@
 import java.io.*;
-public class Movie implements Serializable{
+public class Movie extends Product implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String title;
@@ -11,7 +11,7 @@ public class Movie implements Serializable{
 
 
 	public Movie(int id, String title, int value, int length, float rating) {
-		this.id = id;
+		super();
 		this.title = title;
 		this.value = value;
 		this.length = length;

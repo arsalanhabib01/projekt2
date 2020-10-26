@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Book implements Serializable {
+public class Book extends Product implements Serializable {
 
 	private int id;
 	private String title;
@@ -11,7 +11,7 @@ public class Book implements Serializable {
 	private String publisher;
 
 	public Book(int id, String title, int value, int pages, String publisher) {
-		this.id = id;
+		super();
 		this.title = title;
 		this.value = value;
 		this.pages = pages;
