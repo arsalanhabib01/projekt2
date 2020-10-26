@@ -192,7 +192,19 @@ public class Library implements IntLib {
 	}
 
 	@Override
-	public void deregister() {
+	public void deregister(String[] argument) {
+		int input = Integer.parseInt(argument[0]);
+		for (int i = 0; i < allProducts.size(); i++) {
+			if(input == allProducts.get(i).getId()) {
+				//need to show the title here
+				System.out.println("Successfully deregistered " +allProducts.get(i).getId());
+				allProducts.remove(i);
+				break;
+			}
+			else
+				System.out.println("Error: No product with id "+argument[0]+" registered.");
+		}
+
 
 	}
 
@@ -204,9 +216,17 @@ public class Library implements IntLib {
 	}
 
 	@Override
-	public void info() {
+	public void info(String[] argument) {
+		int input = Integer.parseInt(argument[0]);
 		for (int i = 0; i < allProducts.size(); i++) {
+			if(input == allProducts.get(i).getId()) {
+				//need to show the update method here
+				System.out.println(allProducts.get(i).toString());
+				//allProducts.remove(i);
+			}
+			else
+				System.out.println("Error: No product with id "+argument[0]+" registered.");
+		}
 
 		}
-	}
 }

@@ -2,10 +2,10 @@ public interface IntLib {
 
 	void register();
 
-	void deregister();
+	void deregister(String[] argument);
 
 	void list();
 
-	void info();
+	void info(String[] argument);
 
 }

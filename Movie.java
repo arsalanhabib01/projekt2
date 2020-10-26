@@ -71,7 +71,8 @@ public class Movie extends Product implements Serializable{
 
 
 
-	public void update(int length, float rating) {
+	public String update() {
+		return this.getClass().getSimpleName() + title + ": Value " + value + "kr, Length " + length + ", Rating " + rating;
 
 	}
 

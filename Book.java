@@ -60,7 +60,8 @@ public class Book extends Product implements Serializable {
 	}
 
 
-	public void update(int pages, String publisher) {
+	public String update() {
+		return this.getClass().getSimpleName() + title + ": Value " + value + "kr, Pages " + pages + ", Publisher Name " + publisher;
 
 
 	}
