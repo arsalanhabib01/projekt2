@@ -5,6 +5,7 @@ public class LibraryManager {
 
 	private IntLib library;
 	private static final String libPath = "library.bin";
+	private static int counter = 0, Number;
 	boolean running;
 
 	public static void setBook(boolean book) {
@@ -144,7 +145,7 @@ public class LibraryManager {
 		}
 		return arguments2;
 	}
-	private static int counter = 0, Number;
+
 
 	private static void charCheck(String[] argument) { //New method can check characters in the command argument
 		String str = argument[0];
