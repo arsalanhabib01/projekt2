@@ -277,15 +277,15 @@ public class LibraryManager {
 			setMovie(true);
 			setBook(false);
 			// call here class movie
-			System.out.println("test movie" + movie);
-			System.out.println("test book" + book);
+		//	System.out.println("test movie" + movie);
+		//	System.out.println("test book" + book);
 
 			this.library.register();
 		} else if (c == 'b') {
 			setMovie(false);
 			setBook(true);
-			System.out.println("test book" + book);
-			System.out.println("test movie" + movie);
+		//	System.out.println("test book" + book);
+		//	System.out.println("test movie" + movie);
 			// call here class book
 			this.library.register();
 		} else {

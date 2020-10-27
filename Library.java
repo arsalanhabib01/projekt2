@@ -235,9 +235,12 @@ public class Library implements IntLib {
 
 	@Override
 	public void list() {
-		for (int i = 0; i<allProducts.size(); i++) {
-			System.out.println(allProducts.get(i) + "has ID: " + allProducts.get(0).getId());
-		}
+		if(allProducts.isEmpty())
+			System.out.println("No Record found List is Empty: ");
+		else
+			for (int i = 0; i<allProducts.size(); i++) {
+				System.out.println(allProducts.get(i) + "has ID: " + allProducts.get(i).getId());
+			}
 	}
 
 	@Override
