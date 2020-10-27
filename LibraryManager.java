@@ -45,7 +45,7 @@ public class LibraryManager {
 		System.out.println("> java LibrarySystem\nWelcome!\nSuccesfully initialized system state from file(s).");
 		System.out.println("\nCurrent inventory:");
 		// read file the current inventory from here
-
+		manager.library.init();
 		try {
 			manager.start();
 		}catch (RuntimeException e) {
@@ -70,7 +70,6 @@ public class LibraryManager {
 
 		Scanner scanner = new Scanner(System.in);
 		running = true;
-		library.init();
 		this.library.list();
 
 		while (running) {
@@ -96,8 +95,9 @@ public class LibraryManager {
 						checkinCommand(arguments);
 						break;
 					case REGISTER:
-						if(arguments.length <= 0)
+						if(arguments.length <= 0) {
 							registerCommand();
+						}
 						else{
 							System.out.println("Illegal Argument");
 							continue;}

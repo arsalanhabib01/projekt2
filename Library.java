@@ -271,7 +271,7 @@ public class Library implements IntLib {
 		for (int i = 0; i < allProducts.size(); i++) {
 			if(input == allProducts.get(i).getId()){
 				//need to show the update method here
-				System.out.println(allProducts.get(i).toString());
+				System.out.println(allProducts.get(i).getClass().getSimpleName() + " " + allProducts.get(i).getTitle() + ": " + "Value: " + allProducts.get(i).getValue() +"kr. ");
 				count++;
 			}
 		}
