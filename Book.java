@@ -14,20 +14,20 @@ public class Book extends Product implements Serializable {
 		super();
 		this.pages = pages;
 		this.publisher = publisher;
-		//this.borrowed = borrowed;
-	}
-
-	@Override
-	public void setBorrowed(boolean borrowed) {
-		super.borrowed = borrowed;
+		this.borrowed = borrowed; 
 	}
 
 	public Book(){
 		super();
 	}
 
+
+	public void setBorrowed(boolean borrowed) {
+		super.setBorrowed(borrowed);
+		this.borrowed = borrowed;
+	}
+
 	public boolean getBorrowed() {
-		this.borrowed = super.getBorrowed();
 		return borrowed;
 	}
 
@@ -67,10 +67,10 @@ public class Book extends Product implements Serializable {
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		String isBorrowed = null;
-		if (!super.getBorrowed())  {
+		if (!this.getBorrowed())  {
 			isBorrowed = "(not available)";
 		}
-		else if (super.getBorrowed())  {
+		else if (this.getBorrowed())  {
 			isBorrowed = "(in stock)";
 		}
 		

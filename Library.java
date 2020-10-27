@@ -91,7 +91,7 @@ public class Library implements IntLib {
 				System.out.print("> ");
 				Scanner sp = new Scanner(System.in);
 				((Book) bok).setPublisher(sp.nextLine());
-				((Book) bok).setBorrowed(true);
+				((Book) bok).setBorrowed(false);
 				//System.out.println(bok.getPublisher());
 				//System.out.println(bok.toString());
 				for (int i = 0; i<allProducts.size(); i++) {
@@ -172,7 +172,7 @@ public class Library implements IntLib {
 				}while (fnumber < 0.0 || fnumber > 10.0);
 				count = 0;
 
-				((Movie) movie).setBorrowed(true);
+				((Movie) movie).setBorrowed(false);
 
 				for (int i = 0; i<allProducts.size(); i++) {
 					if (((Movie) movie).getId() == allProducts.get(i).getId()){
@@ -291,6 +291,7 @@ public class Library implements IntLib {
 					allProducts.get(i).setBorrowed(true);
 					System.out.println("Successfully returned " + allProducts.get(i).getTitle() + " from " );
 					count++;
+					writeRecord();
 				}
 				if (count == 0) {
 					System.out.println("Cannot return " + allProducts.get(i).getTitle() + ". It is not borrowed by any customer.");
@@ -301,6 +302,7 @@ public class Library implements IntLib {
 		}
 		if (count == 0)
 			System.out.println("ID not exist "+argument[0]);
+
 	}
 
 	@Override
@@ -320,16 +322,17 @@ public class Library implements IntLib {
 					allProducts.get(i).setBorrowed(false);
 					System.out.println("Successfully lended to " + allProducts.get(i).getTitle() + " to " +customerName);
 					count++;
+					writeRecord();
 				}
 				if (count == 0) {
 					System.out.println("Cannot lend to " + allProducts.get(i).getTitle() + " to another customer. It is already borrowed by ");
 					count++;
 				}
 			}
-
 		}
 		if (count == 0)
 			System.out.println("ID not exist "+argument[0]);
+
 	}
 
 }

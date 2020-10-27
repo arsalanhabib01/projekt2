@@ -1,7 +1,5 @@
 public class Product {
-
-
-    protected boolean borrowed;
+    private boolean borrowed;
     private String title;
     private int value;
     private int id;
@@ -20,17 +18,16 @@ public class Product {
         this.value = value;
         this.borrowed = borrowed;
     }
-    
-    public boolean getBorrowed() {
-        return borrowed;
+    public Product() {
+        super();
     }
-
+    
     public void setBorrowed(boolean borrowed) {
         this.borrowed = borrowed;
     }
-    
-    public Product() {
-        
+
+    public boolean getBorrowed() {
+        return borrowed;
     }
 
     public int getId() {
