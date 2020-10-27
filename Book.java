@@ -10,14 +10,23 @@ public class Book extends Product implements Serializable {
 	private int pages;
 	private String publisher;
 
-	public Book(int id, String title, int value, int pages, String publisher) {
+	public Book(int id, String title, int value, int pages, String publisher, boolean borrowed) {
 		super();
 		this.pages = pages;
 		this.publisher = publisher;
+		//this.borrowed = borrowed;
 	}
 
 	public Book(){
 		super();
+	}
+
+	public boolean getBorrowed() {
+		return borrowed;
+	}
+
+	public void setBorrowed(boolean borrowed) {
+		this.borrowed = borrowed;
 	}
 
 	public void setId(int id) {

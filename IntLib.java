@@ -8,6 +8,10 @@ public interface IntLib {
 
 	void info(String[] argument);
 
+	void checkin(String[] argument);
+
+	void checkout(String[] argument);
+
 	void init();
 
 }

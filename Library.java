@@ -280,4 +280,56 @@ public class Library implements IntLib {
 		else
 			count = 0;
 		}
+
+	@Override
+	public void checkin(String[] argument){
+		int input = Integer.parseInt(argument[0]);
+		int count = 0;
+		for (int i = 0; i < allProducts.size(); i++) {
+			if(input == allProducts.get(i).getId()) {
+				if(!allProducts.get(i).getBorrowed()) {
+					allProducts.get(i).setBorrowed(true);
+					System.out.println("Successfully returned " + allProducts.get(i).getTitle() + " from " );
+					count++;
+				}
+				if (count == 0) {
+					System.out.println("Cannot return " + allProducts.get(i).getTitle() + ". It is not borrowed by any customer.");
+					count++;
+				}
+			}
+
+		}
+		if (count == 0)
+			System.out.println("ID not exist "+argument[0]);
+	}
+
+	@Override
+	public void checkout(String[] argument){
+		int input = Integer.parseInt(argument[0]);
+		int count = 0;
+
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter customer name:" );
+		String customerName = in.nextLine();
+		Scanner phone = new Scanner(System.in);
+		System.out.println("Enter customer phone number:");
+		String customerPhoneNo = phone.nextLine();
+		for (int i = 0; i < allProducts.size(); i++) {
+			if(input == allProducts.get(i).getId()) {
+				if(allProducts.get(i).getBorrowed()) {
+					allProducts.get(i).setBorrowed(false);
+					System.out.println("Successfully lended to " + allProducts.get(i).getTitle() + " to " +customerName);
+					count++;
+				}
+				if (count == 0) {
+					System.out.println("Cannot lend to " + allProducts.get(i).getTitle() + " to another customer. It is already borrowed by ");
+					count++;
+				}
+			}
+
+		}
+		if (count == 0)
+			System.out.println("ID not exist "+argument[0]);
+	}
+
 }

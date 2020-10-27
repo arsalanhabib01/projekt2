@@ -167,7 +167,7 @@ public class LibraryManager {
 		}
 	}
 
-	private static void checkoutCommand(String[] argument) {
+	private void checkoutCommand(String[] argument) {
 
 	/*		String str = argument[0];
 			int count = 0, Number = 0;
@@ -185,8 +185,9 @@ public class LibraryManager {
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
 			else {
-				System.out.println(Number);//this number will check if it is already exist
-				System.out.println("testing checkout " + argument[0]);
+				this.library.checkout(argument);
+				//System.out.println(Number);//this number will check if it is already exist
+				//System.out.println("testing checkout " + argument[0]);
 			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
@@ -194,7 +195,7 @@ public class LibraryManager {
 
 	}
 
-	private static void checkinCommand(String[] argument) {
+	private void checkinCommand(String[] argument) {
 
 	/*		String str = argument[0];
 			int count = 0, Number = 0;
@@ -210,8 +211,9 @@ public class LibraryManager {
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
 			else{
-				System.out.println(Number);//this number will check if it is already exist
-				System.out.println("testing checkin " + argument[0]);
+				this.library.checkin(argument);
+				//System.out.println(Number);//this number will check if it is already exist
+				//System.out.println("testing checkin " + argument[0]);
 			}
 		}else {
 			System.out.println("Invalid Argument: Characters");

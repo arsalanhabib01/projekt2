@@ -10,16 +10,23 @@ public class Movie extends Product implements Serializable{
 	private float rating;
 
 
-	public Movie(int id, String title, int value, int length, float rating) {
+	public Movie(int id, String title, int value, int length, float rating, boolean borrowed) {
 		super();
 		this.length = length;
 		this.rating = rating;
+		//this.borrowed = borrowed;
 	}
 
 	public Movie(){
 		super();
 	}
+	public boolean getBorrowed() {
+		return borrowed;
+	}
 
+	public void setBorrowed(boolean borrowed) {
+		this.borrowed = borrowed;
+	}
 
 	public void setId(int id) {
 		this.id = id;
