@@ -34,6 +34,8 @@ public class Library implements IntLib {
 	@Override
 	public void register() {
 		int count = 0;
+		int id_count = 0;
+
 		if (LibraryManager.isBook()) {
 
 			Scanner sc = new Scanner(System.in);
@@ -51,8 +53,7 @@ public class Library implements IntLib {
 						System.out.println("Enter product ID: ");
 						System.out.print("> ");
 						((Book) bok).setId(sc.nextInt());
-						count = 1;
-					}
+						count = 1;}
 				}while(bok.getId() < 0);
 				// here our program can check in the file if the id is already exist
 				count = 0;
@@ -75,11 +76,22 @@ public class Library implements IntLib {
 				System.out.print("> ");
 				Scanner sp = new Scanner(System.in);
 				((Book) bok).setPublisher(sp.nextLine());
+				((Book) bok).setBorrowed(true);
 				//System.out.println(bok.getPublisher());
 				//System.out.println(bok.toString());
-				allProducts.add(bok);
-				System.out.println(Arrays.asList(allProducts));
-				writeRecord(bok);
+				for (int i = 0; i<allProducts.size(); i++) {
+					if (((Book) bok).getId() == allProducts.get(i).getId()){
+						System.out.println("Error: Product with ID "+ allProducts.get(i).getId() + " is already registered.");
+						id_count++;}
+				}
+				if(id_count == 0) {
+					allProducts.add(bok);
+					System.out.println("Successfully registered " + ((Book) bok).getTitle());
+					//System.out.println(Arrays.asList(allProducts));
+					writeRecord(bok);
+				}else
+					id_count = 0;
+
 
 			} catch (InputMismatchException e){
 				System.out.println("Invalid Input : "+e);
@@ -145,9 +157,20 @@ public class Library implements IntLib {
 				}while (fnumber < 0.0 || fnumber > 10.0);
 				count = 0;
 
-				allProducts.add(movie);
-				System.out.println(Arrays.asList(allProducts));
-				writeRecord(movie);
+				((Movie) movie).setBorrowed(true);
+
+				for (int i = 0; i<allProducts.size(); i++) {
+					if (((Movie) movie).getId() == allProducts.get(i).getId()){
+						System.out.println("Error: Product with ID "+ allProducts.get(i).getId() + " is already registered.");
+						id_count++;}
+				}
+				if(id_count == 0) {
+					allProducts.add(movie);
+					System.out.println("Successfully registered " + ((Movie) movie).getTitle());
+					//System.out.println(Arrays.asList(allProducts));
+					writeRecord(movie);
+				}else
+					id_count = 0;
 
 			} catch (InputMismatchException e){
 				System.out.println("Invalid Input : "+e);
@@ -157,6 +180,7 @@ public class Library implements IntLib {
 		}
 
 	}
+
 
 	public void writeRecord(Product product){//LinkedList<Object> allProducts ){
 
@@ -197,8 +221,7 @@ public class Library implements IntLib {
 		int count = 0;
 		for (int i = 0; i < allProducts.size(); i++) {
 			if (input == allProducts.get(i).getId()) {
-				//need to show the title here
-				System.out.println("Successfully deregistered " + allProducts.get(i).getId());
+				System.out.println("Successfully deregistered " + allProducts.get(i).getTitle());
 				allProducts.remove(i);
 				count++;
 			}

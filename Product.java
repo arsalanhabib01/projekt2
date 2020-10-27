@@ -3,6 +3,7 @@ public class Product {
     private String title;
     private int value;
     private int id;
+    private boolean borrowed;
 
     public String getTitle() {
         return title;
@@ -12,12 +13,19 @@ public class Product {
         return value;
     }
 
-    public Product(int id, String title, int value) {
+    public Product(int id, String title, int value, boolean borrowed) {
         this.id = id;
         this.title = title;
         this.value = value;
+        this.borrowed = borrowed;
+    }
+    public boolean getBorrowed() {
+        return borrowed;
     }
 
+    public void setBorrowed(boolean borrowed) {
+        this.borrowed = borrowed;
+    }
     public Product() {
         
     }
