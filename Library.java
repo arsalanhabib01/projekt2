@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.InputMismatchException;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Library implements IntLib {
 
@@ -26,11 +23,29 @@ public class Library implements IntLib {
 	}
 
 
-	public void writeProduct(int id) {
+	@Override
+	public void init() {
+		try {
+			FileInputStream fin = new FileInputStream(libPath);
+			ObjectInputStream oin = new ObjectInputStream(fin);
 
-		throw new UnsupportedOperationException();
+			for ( ;; ) {
+				allProducts.add((Product) oin.readObject());
+			}
+
+		}catch (FileNotFoundException e){
+			System.out.println(e);
+		}catch (EOFException e) {
+			System.out.println("ID   " + "TYPE   " + "NAME   " + "STATE");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+
 	}
-
+	
 	@Override
 	public void register() {
 		int count = 0;
@@ -88,7 +103,7 @@ public class Library implements IntLib {
 					allProducts.add(bok);
 					System.out.println("Successfully registered " + ((Book) bok).getTitle());
 					//System.out.println(Arrays.asList(allProducts));
-					writeRecord(bok);
+					//writeRecord(bok);
 				}else
 					id_count = 0;
 
@@ -168,7 +183,7 @@ public class Library implements IntLib {
 					allProducts.add(movie);
 					System.out.println("Successfully registered " + ((Movie) movie).getTitle());
 					//System.out.println(Arrays.asList(allProducts));
-					writeRecord(movie);
+					//writeRecord(movie);
 				}else
 					id_count = 0;
 
@@ -178,18 +193,23 @@ public class Library implements IntLib {
 				register();
 			}
 		}
-
+				writeRecord();
 	}
 
 
-	public void writeRecord(Product product){//LinkedList<Object> allProducts ){
+
+	public void writeRecord(){//LinkedList<Object> allProducts ){
 
 		try{
 			FileOutputStream fos = new FileOutputStream(libPath);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			//Movie movie = new Movie();
 			//LinkedList object= allProducts;
-			oos.writeObject(product);
+
+			for ( Product prd : allProducts ) {
+				oos.writeObject(prd);
+			}
+
 			fos.flush();
 			oos.flush();
 		}catch (FileNotFoundException e){
@@ -205,7 +225,6 @@ public class Library implements IntLib {
 			Object object1 = oin.readObject();
 			fin.close();
 			oin.close();
-			System.out.println(object1.toString());
 		}catch (FileNotFoundException e){
 			System.out.println(e);
 		}catch (IOException e){
@@ -226,6 +245,8 @@ public class Library implements IntLib {
 				count++;
 			}
 		}
+		writeRecord();
+
 		if (count == 0)
 				System.out.println("Error: No product with id "+argument[0]+" registered.");
 		else
@@ -239,7 +260,7 @@ public class Library implements IntLib {
 			System.out.println("No Record found List is Empty: ");
 		else
 			for (int i = 0; i<allProducts.size(); i++) {
-				System.out.println(allProducts.get(i) + "has ID: " + allProducts.get(i).getId());
+				System.out.println(allProducts.get(i));
 			}
 	}
 

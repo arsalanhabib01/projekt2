@@ -39,12 +39,19 @@ public class LibraryManager {
 	}
 
 	public static void main(String[] args) {
+
+
 		LibraryManager manager = new LibraryManager(libPath);
 		System.out.println("> java LibrarySystem\nWelcome!\nSuccesfully initialized system state from file(s).");
 		System.out.println("\nCurrent inventory:");
 		// read file the current inventory from here
 
-		manager.start();
+		try {
+			manager.start();
+		}catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	public LibraryManager (String libPath) {
@@ -60,8 +67,11 @@ public class LibraryManager {
 
 
 	public void start() {
+
 		Scanner scanner = new Scanner(System.in);
 		running = true;
+		library.init();
+		this.library.list();
 
 		while (running) {
 			System.out.print("> ");
@@ -121,6 +131,7 @@ public class LibraryManager {
 				continue;
 			}
 		}
+
 		scanner.close();
 	}
 

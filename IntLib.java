@@ -8,4 +8,6 @@ public interface IntLib {
 
 	void info(String[] argument);
 
+	void init();
+
 }
