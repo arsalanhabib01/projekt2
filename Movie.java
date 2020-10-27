@@ -5,20 +5,34 @@ public class Movie extends Product implements Serializable{
 	private String title;
 	private int value;
 	private boolean borrowed;
-	private int type;
+	//private int type;
 	private int length;
 	private float rating;
+	private String CustomerName;
+	private String CustomerPhoneNo;
 
-
+/*
 	public Movie(int id, String title, int value, int length, float rating, boolean borrowed) {
 		super();
 		this.length = length;
 		this.rating = rating;
 
 	}
-
+*/
 	public Movie(){
 		super();
+	}
+
+	@Override
+	public void setCustomerName(String CustomerName){
+		super.setCustomerName(CustomerName);
+		this.CustomerName = CustomerName;
+	}
+
+	@Override
+	public void setCustomerPhoneNo(String CustomerPhoneNo){
+		super.setCustomerPhoneNo(CustomerPhoneNo);
+		this.CustomerPhoneNo = CustomerPhoneNo;
 	}
 
 	@Override
@@ -27,6 +41,8 @@ public class Movie extends Product implements Serializable{
 		this.borrowed = borrowed;
 	}
 
+	public String getCustomerName(){return CustomerName;}
+	public String getCustomerPhoneNo(){return CustomerPhoneNo;}
 	public boolean getBorrowed() {
 			return borrowed;
 	}
@@ -59,24 +75,24 @@ public class Movie extends Product implements Serializable{
 	public void setLength(int length) {
 		this.length = length;
 	}
-
+/*
 	public int getLength() {
 		return length;
 	}
-
+*/
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
-
+/*
 	public float getRating() {
 		return rating;
 	}
-
+*/
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		String isBorrowed = null;
 		if (!this.getBorrowed())  {
-			isBorrowed = "(not available)";
+			isBorrowed = "\n\tBorrowed by: " + getCustomerName() + ", " + getCustomerPhoneNo();
 		}
 		else if (this.getBorrowed())  {
 			isBorrowed = "(in stock)";

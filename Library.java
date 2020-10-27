@@ -7,7 +7,7 @@ public class Library implements IntLib {
 
 	//private Book[] books;
 	//private Movie[] movies;
-	private String libPath;
+	private final String libPath;
 
 	public Library (String libPath) throws FileNotFoundException {
 
@@ -29,21 +29,20 @@ public class Library implements IntLib {
 			FileInputStream fin = new FileInputStream(libPath);
 			ObjectInputStream oin = new ObjectInputStream(fin);
 
-			for ( ;; ) {
+			for ( ;; )
 				allProducts.add((Product) oin.readObject());
-			}
+
 
 		}catch (FileNotFoundException e){
-			System.out.println(e);
+			System.out.println("File Not Found Exception");
 		}catch (EOFException e) {
 			System.out.println("ID   " + "TYPE   " + "NAME   " + "STATE");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("IO Exception");
 		} catch (ClassNotFoundException e) {
+			System.out.println("Class Not Found Exception");
 			e.printStackTrace();
 		}
-
-
 	}
 	
 	@Override
@@ -54,7 +53,7 @@ public class Library implements IntLib {
 		if (LibraryManager.isBook()) {
 
 			Scanner sc = new Scanner(System.in);
-			Product bok = new Book();
+			Book bok = new Book();
 
 			try{
 				do {
@@ -62,12 +61,12 @@ public class Library implements IntLib {
 						System.out.println("Invalid ID: negative number");
 						System.out.println("Re-Enter product ID: ");
 						System.out.print("> ");
-						((Book) bok).setId(sc.nextInt());
+						bok.setId(sc.nextInt());
 					}
 					else {
 						System.out.println("Enter product ID: ");
 						System.out.print("> ");
-						((Book) bok).setId(sc.nextInt());
+						bok.setId(sc.nextInt());
 						count = 1;}
 				}while(bok.getId() < 0);
 				// here our program can check in the file if the id is already exist
@@ -76,36 +75,37 @@ public class Library implements IntLib {
 
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
-				((Book) bok).setTitle(st.nextLine());
+				bok.setTitle(st.nextLine());
 
 				//System.out.println(bok.getTitle());
 				System.out.println("Enter Value: ");
 				System.out.print("> ");
-				((Book) bok).setValue(sc.nextInt());
+				bok.setValue(sc.nextInt());
 				//System.out.println(bok.getValue());
 				System.out.println("Enter Pages: ");
 				System.out.print("> ");
-				((Book) bok).setPages(sc.nextInt());
+				bok.setPages(sc.nextInt());
 				//System.out.println(bok.getPages());
 				System.out.println("Enter Publisher Name: ");
 				System.out.print("> ");
 				Scanner sp = new Scanner(System.in);
-				((Book) bok).setPublisher(sp.nextLine());
-				((Book) bok).setBorrowed(false);
+				bok.setPublisher(sp.nextLine());
+				bok.setBorrowed(true);
 				//System.out.println(bok.getPublisher());
 				//System.out.println(bok.toString());
-				for (int i = 0; i<allProducts.size(); i++) {
-					if (((Book) bok).getId() == allProducts.get(i).getId()){
-						System.out.println("Error: Product with ID "+ allProducts.get(i).getId() + " is already registered.");
-						id_count++;}
+				for (Product allProduct : allProducts) {
+					if (bok.getId() == allProduct.getId()) {
+						System.out.println("Error: Product with ID " + allProduct.getId() + " is already registered.");
+						id_count++;
+					}
 				}
 				if(id_count == 0) {
 					allProducts.add(bok);
 					System.out.println("Successfully registered " + ((Book) bok).getTitle());
 					//System.out.println(Arrays.asList(allProducts));
 					//writeRecord(bok);
-				}else
-					id_count = 0;
+				}//else
+				//	id_count = 0;
 
 
 			} catch (InputMismatchException e){
@@ -118,7 +118,7 @@ public class Library implements IntLib {
 		else if (LibraryManager.isMovie()) {
 
 			Scanner sc = new Scanner(System.in);
-			Product movie = new Movie();
+			Movie movie = new Movie();
 			try{
 
 				do {
@@ -126,12 +126,12 @@ public class Library implements IntLib {
 						System.out.println("Invalid ID: negative number");
 						System.out.println("Re-Enter product ID: ");
 						System.out.print("> ");
-						((Movie) movie).setId(sc.nextInt());
+						movie.setId(sc.nextInt());
 					}
 					else {
 						System.out.println("Enter product ID: ");
 						System.out.print("> ");
-						((Movie) movie).setId(sc.nextInt());
+						movie.setId(sc.nextInt());
 						count = 1;
 					}
 				}while(movie.getId() < 0);
@@ -141,15 +141,15 @@ public class Library implements IntLib {
 				Scanner st = new Scanner(System.in);
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
-				((Movie) movie).setTitle(st.nextLine());
+				movie.setTitle(st.nextLine());
 				//System.out.println(bok.getTitle());
 				System.out.println("Enter Value: ");
 				System.out.print("> ");
-				((Movie) movie).setValue(sc.nextInt());
+				movie.setValue(sc.nextInt());
 				//System.out.println(bok.getValue());
 				System.out.println("Enter Length: ");
 				System.out.print("> ");
-				((Movie) movie).setLength(sc.nextInt());
+				movie.setLength(sc.nextInt());
 				//System.out.println(bok.getPages());
 
 				Scanner sp = new Scanner(System.in);
@@ -160,32 +160,33 @@ public class Library implements IntLib {
 						System.out.println("Re-Enter IMDB rating: ");
 						System.out.print("> ");
 						fnumber = sp.nextFloat();
-						((Movie) movie).setRating(fnumber);
+						movie.setRating(fnumber);
 					}
 					else {
 						System.out.println("Enter IMDB rating: ");
 						System.out.print("> ");
 						fnumber = sp.nextFloat();
-						((Movie) movie).setRating(fnumber);
+						movie.setRating(fnumber);
 						count = 1;
 					}
 				}while (fnumber < 0.0 || fnumber > 10.0);
 				count = 0;
 
-				((Movie) movie).setBorrowed(false);
+				movie.setBorrowed(true);
 
-				for (int i = 0; i<allProducts.size(); i++) {
-					if (((Movie) movie).getId() == allProducts.get(i).getId()){
-						System.out.println("Error: Product with ID "+ allProducts.get(i).getId() + " is already registered.");
-						id_count++;}
+				for (Product allProduct : allProducts) {
+					if (movie.getId() == allProduct.getId()) {
+						System.out.println("Error: Product with ID " + allProduct.getId() + " is already registered.");
+						id_count++;
+					}
 				}
 				if(id_count == 0) {
 					allProducts.add(movie);
 					System.out.println("Successfully registered " + ((Movie) movie).getTitle());
 					//System.out.println(Arrays.asList(allProducts));
 					//writeRecord(movie);
-				}else
-					id_count = 0;
+				}//else
+				//	id_count = 0;
 
 			} catch (InputMismatchException e){
 				System.out.println("Invalid Input : "+e);
@@ -213,9 +214,10 @@ public class Library implements IntLib {
 			fos.flush();
 			oos.flush();
 		}catch (FileNotFoundException e){
-			System.out.println(e);
+			System.out.println("File Not Found Exception");
 		}catch (IOException e){
-			System.out.println(e);
+			System.out.println("IO Exception");
+			e.printStackTrace();
 		}
 		//objFilePath ="mySerializedlibrary.bin";
 		try {
@@ -226,11 +228,12 @@ public class Library implements IntLib {
 			fin.close();
 			oin.close();
 		}catch (FileNotFoundException e){
-			System.out.println(e);
+			System.out.println("File Not Found Exception");
 		}catch (IOException e){
-			System.out.println(e);
+			System.out.println("IO Exception");
 		}catch (ClassNotFoundException e){
-			System.out.println(e);
+			System.out.println("Class Not Found Exception");
+			e.printStackTrace();
 		}
 	}
 
@@ -259,8 +262,8 @@ public class Library implements IntLib {
 		if(allProducts.isEmpty())
 			System.out.println("No Record found List is Empty: ");
 		else
-			for (int i = 0; i<allProducts.size(); i++) {
-				System.out.println(allProducts.get(i));
+			for (Product allProduct : allProducts) {
+				System.out.println(allProduct);
 			}
 	}
 
@@ -268,10 +271,10 @@ public class Library implements IntLib {
 	public void info(String[] argument) {
 		int input = Integer.parseInt(argument[0]);
 		int count = 0;
-		for (int i = 0; i < allProducts.size(); i++) {
-			if(input == allProducts.get(i).getId()){
+		for (Product allProduct : allProducts) {
+			if (input == allProduct.getId()) {
 				//need to show the update method here
-				System.out.println(allProducts.get(i).getClass().getSimpleName() + " " + allProducts.get(i).getTitle() + ": " + "Value: " + allProducts.get(i).getValue() +"kr. ");
+				System.out.println(allProduct.getClass().getSimpleName() + " " + allProduct.getTitle() + ": " + "Value: " + allProduct.getValue() + "kr. ");
 				count++;
 			}
 		}
@@ -285,16 +288,16 @@ public class Library implements IntLib {
 	public void checkin(String[] argument){
 		int input = Integer.parseInt(argument[0]);
 		int count = 0;
-		for (int i = 0; i < allProducts.size(); i++) {
-			if(input == allProducts.get(i).getId()) {
-				if(!allProducts.get(i).getBorrowed()) {
-					allProducts.get(i).setBorrowed(true);
-					System.out.println("Successfully returned " + allProducts.get(i).getTitle() + " from " );
+		for (Product allProduct : allProducts) {
+			if (input == allProduct.getId()) {
+				if (!allProduct.getBorrowed()) {
+					allProduct.setBorrowed(true);
+					System.out.println("Successfully returned " + allProduct.getTitle() + " from " + allProduct.getCustomerName());
 					count++;
 					writeRecord();
 				}
 				if (count == 0) {
-					System.out.println("Cannot return " + allProducts.get(i).getTitle() + ". It is not borrowed by any customer.");
+					System.out.println("Cannot return " + allProduct.getTitle() + ". It is not borrowed by any customer.");
 					count++;
 				}
 			}
@@ -312,20 +315,22 @@ public class Library implements IntLib {
 
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter customer name:" );
-		String customerName = in.nextLine();
+		String Name = in.nextLine();
 		Scanner phone = new Scanner(System.in);
 		System.out.println("Enter customer phone number:");
-		String customerPhoneNo = phone.nextLine();
-		for (int i = 0; i < allProducts.size(); i++) {
-			if(input == allProducts.get(i).getId()) {
-				if(allProducts.get(i).getBorrowed()) {
-					allProducts.get(i).setBorrowed(false);
-					System.out.println("Successfully lended to " + allProducts.get(i).getTitle() + " to " +customerName);
+		String PhoneNo = phone.nextLine();
+		for (Product allProduct : allProducts) {
+			if (input == allProduct.getId()) {
+				if (allProduct.getBorrowed()) {
+					allProduct.setCustomerName(Name);
+					allProduct.setCustomerPhoneNo(PhoneNo);
+					allProduct.setBorrowed(false);
+					System.out.println("Successfully lended to " + allProduct.getTitle() + " to " + allProduct.getCustomerName());
 					count++;
 					writeRecord();
 				}
 				if (count == 0) {
-					System.out.println("Cannot lend to " + allProducts.get(i).getTitle() + " to another customer. It is already borrowed by ");
+					System.out.println("Cannot lend to " + allProduct.getTitle() + " to another customer. It is already borrowed by " + allProduct.getCustomerName());
 					count++;
 				}
 			}

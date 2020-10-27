@@ -1,27 +1,44 @@
 import java.io.Serializable;
 
 public class Book extends Product implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 
 	private int id;
 	private String title;
 	private int value;
 	private boolean borrowed;
-	private int type;
+	//private int type;
 	private int pages;
 	private String publisher;
-
+	private String CustomerName;
+	private String CustomerPhoneNo;
+/*
 	public Book(int id, String title, int value, int pages, String publisher, boolean borrowed) {
 		super();
 		this.pages = pages;
 		this.publisher = publisher;
 		this.borrowed = borrowed; 
 	}
-
+*/
 	public Book(){
 		super();
 	}
 
+	@Override
+	public void setCustomerName(String CustomerName){
+		super.setCustomerName(CustomerName);
+		this.CustomerName = CustomerName;
+	}
+	@Override
+	public void setCustomerPhoneNo(String CustomerPhoneNo){
+		super.setCustomerPhoneNo(CustomerPhoneNo);
+		this.CustomerPhoneNo = CustomerPhoneNo;
+	}
+	public String getCustomerName(){return CustomerName;}
+	public String getCustomerPhoneNo(){return CustomerPhoneNo;}
 
+	@Override
 	public void setBorrowed(boolean borrowed) {
 		super.setBorrowed(borrowed);
 		this.borrowed = borrowed;
@@ -53,22 +70,22 @@ public class Book extends Product implements Serializable {
 	}
 
 	public void setPages(int pages) { this.pages = pages; }
-
+/*
 	public int getPages() {
 		return pages;
 	}
-
+*/
 	public void setPublisher(String publisher) { this.publisher = publisher; }
-
+/*
 	public String getPublisher() {
 		return publisher;
 	}
-
+*/
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		String isBorrowed = null;
 		if (!this.getBorrowed())  {
-			isBorrowed = "(not available)";
+			isBorrowed = "\n\tBorrowed by " + getCustomerName() + ", " + getCustomerPhoneNo();
 		}
 		else if (this.getBorrowed())  {
 			isBorrowed = "(in stock)";

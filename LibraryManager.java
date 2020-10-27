@@ -90,10 +90,18 @@ public class LibraryManager {
 							continue; }
 						break;
 					case CHECKOUT:
-						checkoutCommand(arguments);
+						if(arguments.length > 1) {
+							System.out.println("Illegal Argument");
+						continue;}
+						else
+							checkoutCommand(arguments);
 						break;
 					case CHECKIN:
-						checkinCommand(arguments);
+						if(arguments.length > 1) {
+							System.out.println("Illegal Argument");
+							continue;}
+						else
+							checkinCommand(arguments);
 						break;
 					case REGISTER:
 						if(arguments.length <= 0) {
@@ -104,9 +112,17 @@ public class LibraryManager {
 							continue;}
 						break;
 					case DEREGISTER:
-						deregisterCommand(arguments);
+						if(arguments.length > 1) {
+							System.out.println("Illegal Argument");
+							continue;}
+						else
+							deregisterCommand(arguments);
 						break;
 					case INFO:
+						if(arguments.length > 1) {
+							System.out.println("Illegal Argument");
+							continue;}
+						else
 						infoCommand(arguments);
 						break;
 					case QUIT:
@@ -118,7 +134,7 @@ public class LibraryManager {
 						break;
 					case UNKNOWN:
 						System.out.println("Unknown Command");
-						continue;
+						//continue;
 
 						//	default:
 						//		System.out.println("Unknown Command");
@@ -129,7 +145,7 @@ public class LibraryManager {
 				start();
 			}catch (ArrayIndexOutOfBoundsException e){
 				System.out.println("Missing Argument");
-				continue;
+				//continue;
 			}
 		}
 

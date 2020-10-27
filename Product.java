@@ -3,6 +3,8 @@ public class Product {
     private String title;
     private int value;
     private int id;
+    private String CustomerName;
+    private String CustomerPhoneNo;
 
     public String getTitle() {
         return title;
@@ -18,10 +20,22 @@ public class Product {
         this.value = value;
         this.borrowed = borrowed;
     }
+
+
     public Product() {
         super();
     }
-    
+
+    public void setCustomerName(String CustomerName){
+        this.CustomerName = CustomerName;
+    }
+    public void setCustomerPhoneNo(String CustomerPhoneNo){
+        this.CustomerPhoneNo = CustomerPhoneNo;
+    }
+    public String getCustomerName(){return CustomerName;}
+
+    public String getCustomerPhoneNo(){return CustomerPhoneNo;}
+
     public void setBorrowed(boolean borrowed) {
         this.borrowed = borrowed;
     }
