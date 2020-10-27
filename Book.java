@@ -12,8 +12,6 @@ public class Book extends Product implements Serializable {
 
 	public Book(int id, String title, int value, int pages, String publisher) {
 		super();
-		this.title = title;
-		this.value = value;
 		this.pages = pages;
 		this.publisher = publisher;
 	}
