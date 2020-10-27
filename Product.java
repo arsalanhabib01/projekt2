@@ -1,9 +1,10 @@
 public class Product {
 
+
+    protected boolean borrowed;
     private String title;
     private int value;
     private int id;
-    private boolean borrowed;
 
     public String getTitle() {
         return title;
@@ -19,6 +20,7 @@ public class Product {
         this.value = value;
         this.borrowed = borrowed;
     }
+    
     public boolean getBorrowed() {
         return borrowed;
     }
@@ -26,6 +28,7 @@ public class Product {
     public void setBorrowed(boolean borrowed) {
         this.borrowed = borrowed;
     }
+    
     public Product() {
         
     }

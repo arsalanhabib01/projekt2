@@ -14,18 +14,17 @@ public class Movie extends Product implements Serializable{
 		super();
 		this.length = length;
 		this.rating = rating;
-		//this.borrowed = borrowed;
+		
 	}
 
 	public Movie(){
 		super();
 	}
-	public boolean getBorrowed() {
-		return borrowed;
-	}
+	
+	
 
 	public void setBorrowed(boolean borrowed) {
-		this.borrowed = borrowed;
+		super.borrowed = borrowed;
 	}
 
 	public void setId(int id) {
@@ -70,7 +69,15 @@ public class Movie extends Product implements Serializable{
 
 	@Override      // Overshadowed the toString() method
 	public String toString() {
-		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + "(in stock)";
+		String isBorrowed = null;
+		if (!super.getBorrowed())  {
+			isBorrowed = "(not available)";
+		}
+		else if (super.getBorrowed())  {
+			isBorrowed = "(in stock)";
+		}
+		
+		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + isBorrowed;
 	}
 
 

@@ -17,17 +17,20 @@ public class Book extends Product implements Serializable {
 		//this.borrowed = borrowed;
 	}
 
+	@Override
+	public void setBorrowed(boolean borrowed) {
+		super.borrowed = borrowed;
+	}
+
 	public Book(){
 		super();
 	}
 
 	public boolean getBorrowed() {
+		this.borrowed = super.getBorrowed();
 		return borrowed;
 	}
 
-	public void setBorrowed(boolean borrowed) {
-		this.borrowed = borrowed;
-	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -63,7 +66,15 @@ public class Book extends Product implements Serializable {
 
 	@Override      // Overshadowed the toString() method
 	public String toString() {
-		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + "(in stock)";
+		String isBorrowed = null;
+		if (!super.getBorrowed())  {
+			isBorrowed = "(not available)";
+		}
+		else if (super.getBorrowed())  {
+			isBorrowed = "(in stock)";
+		}
+		
+		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + isBorrowed;
 	}
 
 

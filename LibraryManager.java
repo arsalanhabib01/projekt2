@@ -46,6 +46,7 @@ public class LibraryManager {
 		System.out.println("\nCurrent inventory:");
 		// read file the current inventory from here
 		manager.library.init();
+		manager.library.list();
 		try {
 			manager.start();
 		}catch (RuntimeException e) {
@@ -70,7 +71,7 @@ public class LibraryManager {
 
 		Scanner scanner = new Scanner(System.in);
 		running = true;
-		this.library.list();
+
 
 		while (running) {
 			System.out.print("> ");
@@ -309,6 +310,7 @@ public class LibraryManager {
 	}
 
 	private void listCommand() {
+		System.out.println("ID   " + "TYPE   " + "NAME   " + "STATE");
 		this.library.list();
 		//System.out.println("Command to get all books");
 
