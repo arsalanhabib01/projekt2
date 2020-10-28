@@ -244,11 +244,11 @@ public class Library implements IntLib {
 			fin.close();
 			oin.close();
 		}catch (FileNotFoundException e){
-			System.out.println("File Not Found Exception");
+			System.out.println("ERROR: File Not Found Exception");
 		}catch (IOException e){
-			System.out.println("IO Exception");
+			System.out.println("ERROR: IO Exception");
 		}catch (ClassNotFoundException e){
-			System.out.println("Class Not Found Exception");
+			System.out.println("ERROR: Class Not Found Exception");
 			e.printStackTrace();
 		}
 	}
@@ -321,7 +321,7 @@ public class Library implements IntLib {
 			}
 		}
 		if (count == 0)
-			System.out.println("ID not exist "+argument[0]);
+			System.out.println("Product ID "+argument[0] + " not Exist.");
 	}
 
 	@Override
@@ -352,6 +352,6 @@ public class Library implements IntLib {
 			}
 		}
 		if (count == 0)
-			System.out.println("ID not exist "+argument[0]);
+			System.out.println("Product ID "+argument[0]+" not Exist.");
 	}
 }
