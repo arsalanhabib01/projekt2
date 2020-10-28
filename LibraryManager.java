@@ -90,14 +90,14 @@ public class LibraryManager {
 						break;
 					case CHECKOUT:
 						if(arguments.length > 1) {
-							System.out.println("ERROR: Invalid Argument");
+							System.out.println("ERROR: Invalid Multiple Argument");
 						continue;}
 						else
 							checkoutCommand(arguments);
 						break;
 					case CHECKIN:
 						if(arguments.length > 1) {
-							System.out.println("ERROR: Invalid Argument");
+							System.out.println("ERROR: Invalid Multiple Argument");
 							continue;}
 						else
 							checkinCommand(arguments);
@@ -112,14 +112,14 @@ public class LibraryManager {
 						break;
 					case DEREGISTER:
 						if(arguments.length > 1) {
-							System.out.println("ERROR: Invalid Argument");
+							System.out.println("ERROR: Invalid Multiple Argument");
 							continue;}
 						else
 							deregisterCommand(arguments);
 						break;
 					case INFO:
 						if(arguments.length > 1) {
-							System.out.println("ERROR: Invalid Argument");
+							System.out.println("ERROR: Invalid Multiple Argument");
 							continue;}
 						else
 						infoCommand(arguments);

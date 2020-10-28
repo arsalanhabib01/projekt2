@@ -30,7 +30,7 @@ public class Library implements IntLib {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void register() {
 		int count = 0;
@@ -79,7 +79,7 @@ public class Library implements IntLib {
 
 				do {
 					if (count == 1) {
-						System.out.println("Invalid page number: negative number");
+						System.out.println("Invalid page numbers: negative number");
 						System.out.println("Re-Enter page numbers: ");
 						System.out.print("> ");
 						bok.setPages(sc.nextInt());
@@ -141,12 +141,38 @@ public class Library implements IntLib {
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
 				movie.setTitle(st.nextLine());
-				System.out.println("Enter Value: ");
-				System.out.print("> ");
-				movie.setValue(sc.nextInt());
-				System.out.println("Enter Length: ");
-				System.out.print("> ");
-				movie.setLength(sc.nextInt());
+				do {
+					if (count == 1) {
+						System.out.println("Invalid Value: negative Value");
+						System.out.println("Re-Enter Value: ");
+						System.out.print("> ");
+						movie.setValue(sc.nextInt());
+					}
+					else {
+						System.out.println("Enter Value: ");
+						System.out.print("> ");
+						movie.setValue(sc.nextInt());
+						count = 1;
+					}
+				}while(movie.getValue() < 0);
+				count = 0;
+
+				do {
+					if (count == 1) {
+						System.out.println("Invalid Length: negative number");
+						System.out.println("Re-Enter Length: ");
+						System.out.print("> ");
+						movie.setLength(sc.nextInt());
+					}
+					else {
+						System.out.println("Enter Length: ");
+						System.out.print("> ");
+						movie.setLength(sc.nextInt());
+						count = 1;
+					}
+				}while(movie.getLength() < 0);
+				count = 0;
+
 				Scanner sp = new Scanner(System.in);
 				float fnumber;
 				do {
@@ -264,9 +290,9 @@ public class Library implements IntLib {
 		for (Product allProduct : allProducts) {
 			if (input == allProduct.getId()) {
 				if (allProduct.getType() == 1)
-					System.out.println("Book " + allProduct.getTitle() + ": Value " + allProduct.getValue() + "kr, Pages " + allProduct.getPages() + ", Publisher Name: " + allProduct.getPublisher());
+					System.out.println("(Book) " + allProduct.getTitle() + ": Value " + allProduct.getValue() + "kr, Pages " + allProduct.getPages() + ", Publisher Name: " + allProduct.getPublisher());
 				else if (allProduct.getType() == 0)
-					 System.out.println("Movie " + allProduct.getTitle()+ ": Value " + allProduct.getValue() + "kr, Length " + allProduct.getLength() + ", Rating " + allProduct.getRating());
+					 System.out.println("(Movie) " + allProduct.getTitle()+ ": Value " + allProduct.getValue() + "kr, Length " + allProduct.getLength() + ", Rating " + allProduct.getRating());
 				count++;
 			}
 		}
