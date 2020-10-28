@@ -264,7 +264,7 @@ public class Library implements IntLib {
 		for (Product allProduct : allProducts) {
 			if (input == allProduct.getId()) {
 				if (allProduct.getType() == 1)
-					System.out.println("Book " + allProduct.getTitle() + ": Value " + allProduct.getValue() + "kr, Pages " + allProduct.getPages() + ", Publisher Name " + allProduct.getPublisher());
+					System.out.println("Book " + allProduct.getTitle() + ": Value " + allProduct.getValue() + "kr, Pages " + allProduct.getPages() + ", Publisher Name: " + allProduct.getPublisher());
 				else if (allProduct.getType() == 0)
 					 System.out.println("Movie " + allProduct.getTitle()+ ": Value " + allProduct.getValue() + "kr, Length " + allProduct.getLength() + ", Rating " + allProduct.getRating());
 				count++;
