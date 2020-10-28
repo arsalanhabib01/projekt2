@@ -5,23 +5,9 @@ public class Library implements IntLib {
 
 	LinkedList<Product> allProducts = new LinkedList<Product>(Arrays.asList()); //working on this
 
-	//private Book[] books;
-	//private Movie[] movies;
 	private final String libPath;
 
-	public Library (String libPath) throws FileNotFoundException {
-
-		this.libPath = libPath;
-		//books = parseBooks(productPath);  //not sure if this is right
-		//movies = parseMovies(productPath);
-	}
-
-
-	private boolean parseId(int id) {
-
-		throw new UnsupportedOperationException();
-	}
-
+	public Library (String libPath) throws FileNotFoundException { this.libPath = libPath; }
 
 	@Override
 	public void init() {
@@ -34,13 +20,13 @@ public class Library implements IntLib {
 
 
 		}catch (FileNotFoundException e){
-			System.out.println("File Not Found Exception");
+			System.out.println("ERROR: File Not Found Exception");
 		}catch (EOFException e) {
 			System.out.println("ID   " + "TYPE   " + "NAME   " + "STATE");
 		} catch (IOException e) {
-			System.out.println("IO Exception");
+			System.out.println("ERROR: IO Exception");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Class Not Found Exception");
+			System.out.println("ERROR: Class Not Found Exception");
 			e.printStackTrace();
 		}
 	}
@@ -69,30 +55,23 @@ public class Library implements IntLib {
 						bok.setId(sc.nextInt());
 						count = 1;}
 				}while(bok.getId() < 0);
-				// here our program can check in the file if the id is already exist
 				count = 0;
 				Scanner st = new Scanner(System.in);
 
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
 				bok.setTitle(st.nextLine());
-
-				//System.out.println(bok.getTitle());
 				System.out.println("Enter Value: ");
 				System.out.print("> ");
 				bok.setValue(sc.nextInt());
-				//System.out.println(bok.getValue());
 				System.out.println("Enter Pages: ");
 				System.out.print("> ");
 				bok.setPages(sc.nextInt());
-				//System.out.println(bok.getPages());
 				System.out.println("Enter Publisher Name: ");
 				System.out.print("> ");
 				Scanner sp = new Scanner(System.in);
 				bok.setPublisher(sp.nextLine());
 				bok.setBorrowed(true);
-				//System.out.println(bok.getPublisher());
-				//System.out.println(bok.toString());
 				for (Product allProduct : allProducts) {
 					if (bok.getId() == allProduct.getId()) {
 						System.out.println("Error: Product with ID " + allProduct.getId() + " is already registered.");
@@ -102,11 +81,7 @@ public class Library implements IntLib {
 				if(id_count == 0) {
 					allProducts.add(bok);
 					System.out.println("Successfully registered " + ((Book) bok).getTitle());
-					//System.out.println(Arrays.asList(allProducts));
-					//writeRecord(bok);
-				}//else
-				//	id_count = 0;
-
+				}
 
 			} catch (InputMismatchException e){
 				System.out.println("Invalid Input : "+e);
@@ -136,22 +111,17 @@ public class Library implements IntLib {
 					}
 				}while(movie.getId() < 0);
 				count = 0;
-				// here our program can check in the file if the id is already exist
 
 				Scanner st = new Scanner(System.in);
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
 				movie.setTitle(st.nextLine());
-				//System.out.println(bok.getTitle());
 				System.out.println("Enter Value: ");
 				System.out.print("> ");
 				movie.setValue(sc.nextInt());
-				//System.out.println(bok.getValue());
 				System.out.println("Enter Length: ");
 				System.out.print("> ");
 				movie.setLength(sc.nextInt());
-				//System.out.println(bok.getPages());
-
 				Scanner sp = new Scanner(System.in);
 				float fnumber;
 				do {
@@ -183,10 +153,7 @@ public class Library implements IntLib {
 				if(id_count == 0) {
 					allProducts.add(movie);
 					System.out.println("Successfully registered " + ((Movie) movie).getTitle());
-					//System.out.println(Arrays.asList(allProducts));
-					//writeRecord(movie);
-				}//else
-				//	id_count = 0;
+				}
 
 			} catch (InputMismatchException e){
 				System.out.println("Invalid Input : "+e);
@@ -199,13 +166,11 @@ public class Library implements IntLib {
 
 
 
-	public void writeRecord(){//LinkedList<Object> allProducts ){
+	public void writeRecord(){
 
 		try{
 			FileOutputStream fos = new FileOutputStream(libPath);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			//Movie movie = new Movie();
-			//LinkedList object= allProducts;
 
 			for ( Product prd : allProducts ) {
 				oos.writeObject(prd);
@@ -214,9 +179,9 @@ public class Library implements IntLib {
 			fos.flush();
 			oos.flush();
 		}catch (FileNotFoundException e){
-			System.out.println("File Not Found Exception");
+			System.out.println("ERROR: File Not Found Exception");
 		}catch (IOException e){
-			System.out.println("IO Exception");
+			System.out.println("ERROR: IO Exception");
 			e.printStackTrace();
 		}
 		//objFilePath ="mySerializedlibrary.bin";
@@ -254,7 +219,6 @@ public class Library implements IntLib {
 				System.out.println("Error: No product with id "+argument[0]+" registered.");
 		else
 			count = 0;
-
 	}
 
 	@Override
@@ -269,12 +233,15 @@ public class Library implements IntLib {
 
 	@Override
 	public void info(String[] argument) {
+
 		int input = Integer.parseInt(argument[0]);
 		int count = 0;
 		for (Product allProduct : allProducts) {
 			if (input == allProduct.getId()) {
-				//need to show the update method here
-				System.out.println(allProduct.getClass().getSimpleName() + " " + allProduct.getTitle() + ": " + "Value: " + allProduct.getValue() + "kr. ");
+				if (allProduct.getType() == 1)
+					System.out.println("book " + allProduct.getTitle() + ": Value " + allProduct.getValue() + "kr, Pages " + allProduct.getPages() + ", Publisher Name " + allProduct.getPublisher());
+				else if (allProduct.getType() == 0)
+					 System.out.println("Movie " + allProduct.getTitle()+ ": Value " + allProduct.getValue() + "kr, Length " + allProduct.getLength() + ", Rating " + allProduct.getRating());
 				count++;
 			}
 		}
@@ -282,7 +249,7 @@ public class Library implements IntLib {
 				System.out.println("Error: No product with id "+argument[0]+" registered.");
 		else
 			count = 0;
-		}
+	}
 
 	@Override
 	public void checkin(String[] argument){
@@ -301,11 +268,9 @@ public class Library implements IntLib {
 					count++;
 				}
 			}
-
 		}
 		if (count == 0)
 			System.out.println("ID not exist "+argument[0]);
-
 	}
 
 	@Override
@@ -337,7 +302,5 @@ public class Library implements IntLib {
 		}
 		if (count == 0)
 			System.out.println("ID not exist "+argument[0]);
-
 	}
-
 }

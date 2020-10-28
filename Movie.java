@@ -5,7 +5,7 @@ public class Movie extends Product implements Serializable{
 	private String title;
 	private int value;
 	private boolean borrowed;
-	//private int type;
+	private final int type = 0;
 	private int length;
 	private float rating;
 	private String CustomerName;
@@ -19,10 +19,9 @@ public class Movie extends Product implements Serializable{
 
 	}
 */
-	public Movie(){
-		super();
-	}
+	public Movie(){ super(); }
 
+	public int getType(){return type;}
 	@Override
 	public void setCustomerName(String CustomerName){
 		super.setCustomerName(CustomerName);
@@ -32,81 +31,49 @@ public class Movie extends Product implements Serializable{
 	@Override
 	public void setCustomerPhoneNo(String CustomerPhoneNo){
 		super.setCustomerPhoneNo(CustomerPhoneNo);
-		this.CustomerPhoneNo = CustomerPhoneNo;
-	}
+		this.CustomerPhoneNo = CustomerPhoneNo; }
 
 	@Override
 	public void setBorrowed(boolean borrowed) {
 		super.setBorrowed(borrowed);
-		this.borrowed = borrowed;
-	}
+		this.borrowed = borrowed; }
 
 	public String getCustomerName(){return CustomerName;}
+
 	public String getCustomerPhoneNo(){return CustomerPhoneNo;}
-	public boolean getBorrowed() {
-			return borrowed;
-	}
+
+	public boolean getBorrowed() { return borrowed; }
 
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	public void setId(int id) { this.id = id; }
 
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	public void setTitle(String title) { this.title = title; }
 
-	public String getTitle() {
-		return title;
-	}
+	public String getTitle() { return title; }
 
-	public void setValue(int value) {
-		this.value = value;
-	}
+	public void setValue(int value) { this.value = value; }
 
-	public int getValue() {
-		return value;
-	}
+	public int getValue() { return value; }
 
-	public void setLength(int length) {
-		this.length = length;
-	}
-/*
-	public int getLength() {
-		return length;
-	}
-*/
-	public void setRating(float rating) {
-		this.rating = rating;
-	}
-/*
-	public float getRating() {
-		return rating;
-	}
-*/
+	public void setLength(int length) { this.length = length; }
+
+	public int getLength() {return length;}
+
+	public void setRating(float rating) { this.rating = rating; }
+
+	public float getRating() {return rating;}
+
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		String isBorrowed = null;
-		if (!this.getBorrowed())  {
+		if (!this.getBorrowed())
 			isBorrowed = "\n\tBorrowed by: " + getCustomerName() + ", " + getCustomerPhoneNo();
-		}
-		else if (this.getBorrowed())  {
+		else if (this.getBorrowed())
 			isBorrowed = "(in stock)";
-		}
 		
 		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + isBorrowed;
-	}
-
-
-
-
-	public String update() {
-		return this.getClass().getSimpleName() + title + ": Value " + value + "kr, Length " + length + ", Rating " + rating;
-
 	}
 
 }

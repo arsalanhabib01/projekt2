@@ -3,6 +3,10 @@ public class Product {
     private String title;
     private int value;
     private int id;
+    private int length;
+    private float rating;
+    private int pages;
+    private String publisher;
     private String CustomerName;
     private String CustomerPhoneNo;
 
@@ -14,13 +18,21 @@ public class Product {
         return value;
     }
 
+    public int getLength(){return length;}
+
+    public int getPages(){return pages;}
+
+    public String getPublisher(){return publisher;}
+
+    public float getRating(){return rating;}
+
     public Product(int id, String title, int value, boolean borrowed) {
         this.id = id;
         this.title = title;
         this.value = value;
         this.borrowed = borrowed;
     }
-
+    public int getType(){return getType();}
 
     public Product() {
         super();
@@ -47,4 +59,5 @@ public class Product {
     public int getId() {
         return id;
     }
+
 }

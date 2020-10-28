@@ -50,7 +50,7 @@ public class LibraryManager {
 		try {
 			manager.start();
 		}catch (RuntimeException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
@@ -60,7 +60,7 @@ public class LibraryManager {
 			library = new Library(libPath);
 		} catch (FileNotFoundException fne) {
 			fne.printStackTrace();
-			System.out.println("No file found at " + libPath);
+			System.out.println("ERROR: No File Found at " + libPath);
 			System.out.println("Exiting.");
 			System.exit(0);
 		}
@@ -71,7 +71,6 @@ public class LibraryManager {
 
 		Scanner scanner = new Scanner(System.in);
 		running = true;
-
 
 		while (running) {
 			System.out.print("> ");
@@ -86,19 +85,19 @@ public class LibraryManager {
 						if(arguments.length <= 0)
 							listCommand();
 						else {
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue; }
 						break;
 					case CHECKOUT:
 						if(arguments.length > 1) {
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 						continue;}
 						else
 							checkoutCommand(arguments);
 						break;
 					case CHECKIN:
 						if(arguments.length > 1) {
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue;}
 						else
 							checkinCommand(arguments);
@@ -108,19 +107,19 @@ public class LibraryManager {
 							registerCommand();
 						}
 						else{
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue;}
 						break;
 					case DEREGISTER:
 						if(arguments.length > 1) {
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue;}
 						else
 							deregisterCommand(arguments);
 						break;
 					case INFO:
 						if(arguments.length > 1) {
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue;}
 						else
 						infoCommand(arguments);
@@ -129,23 +128,18 @@ public class LibraryManager {
 						if(arguments.length <= 0)
 							quitCommand();
 						else{
-							System.out.println("Illegal Argument");
+							System.out.println("ERROR: Invalid Argument");
 							continue;}
 						break;
 					case UNKNOWN:
-						System.out.println("Unknown Command");
-						//continue;
+						System.out.println("ERROR: Unknown Command");
 
-						//	default:
-						//		System.out.println("Unknown Command");
-						//		continue;
 				}
 			} catch (IllegalArgumentException e){
-				System.out.println("Illegal Command");
+				System.out.println("ERROR: Invalid Command");
 				start();
 			}catch (ArrayIndexOutOfBoundsException e){
-				System.out.println("Missing Argument");
-				//continue;
+				System.out.println("ERROR: Missing Argument");
 			}
 		}
 
@@ -159,7 +153,6 @@ public class LibraryManager {
 	}
 
 	public static Command parseCommand(String userInput) {
-		//try & catch!
 		String commandString = userInput.split(" ")[0].toUpperCase();
 		return Command.valueOf(commandString);
 
@@ -186,14 +179,6 @@ public class LibraryManager {
 
 	private void checkoutCommand(String[] argument) {
 
-	/*		String str = argument[0];
-			int count = 0, Number = 0;
-			for (int i = 0; i < str.length(); i++) {
-				char ch = str.charAt(i);
-				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
-					count++;
-			}*/
-
 		charCheck(argument);
 
 		if (counter == 0){
@@ -201,67 +186,40 @@ public class LibraryManager {
 			counter = 0;
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else {
+			else
 				this.library.checkout(argument);
-				//System.out.println(Number);//this number will check if it is already exist
-				//System.out.println("testing checkout " + argument[0]);
-			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
 			counter = 0;}
-
 	}
 
 	private void checkinCommand(String[] argument) {
 
-	/*		String str = argument[0];
-			int count = 0, Number = 0;
-			for (int i = 0; i < str.length(); i++) {
-				char ch = str.charAt(i);
-				if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
-					count++;
-			}*/
 		charCheck(argument);
 		if (counter == 0){
 			Number = Integer.parseInt(argument[0]);
 			counter = 0;
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else{
+			else
 				this.library.checkin(argument);
-				//System.out.println(Number);//this number will check if it is already exist
-				//System.out.println("testing checkin " + argument[0]);
-			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
 			counter = 0; }
-
 	}
 
 
 
 	private void deregisterCommand(String[] argument) {
 
-	/*	String str = argument[0];
-		int count = 0, Number = 0;
-		for (int i = 0; i < str.length(); i++) {
-			char ch = str.charAt(i);
-			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
-				count++;
-		}*/
 		charCheck(argument);
 		if (counter == 0){
 			Number = Integer.parseInt(argument[0]);
 			counter = 0;
-			//System.out.println(Number);
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else {
-			//	System.out.println(Number);//this number will check if it is already exist
-
+			else
 				this.library.deregister(argument);
-				//System.out.println("Successfully deregistered " + argument[0]);
-			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
 			counter = 0;}
@@ -270,26 +228,14 @@ public class LibraryManager {
 
 	private void infoCommand(String[] argument){
 
-/*		String str = argument[0];
-		int count = 0, Number = 0;
-		for (int i = 0; i < str.length(); i++) {
-			char ch = str.charAt(i);
-			if (ch >= 'A' && ch <= 'Z' || ch >= 'a' && ch <= 'z')
-				count++;
-		}*/
 		charCheck(argument);
 		if (counter == 0){
 			Number = Integer.parseInt(argument[0]);
 			counter = 0;
-			//System.out.println(Number);
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else {
-				//	System.out.println(Number);//this number will check if it is already exist
-
+			else
 				this.library.info(argument);
-				//System.out.println("Library Information " + argument[0]);
-			}
 		}else {
 			System.out.println("Invalid Argument: Characters");
 			counter = 0;}
@@ -301,22 +247,14 @@ public class LibraryManager {
 		Scanner sc = new Scanner(System.in);
 		char c;
 
-		// Character input
 		c = sc.next().charAt(0);
 		if (c == 'm') {
 			setMovie(true);
 			setBook(false);
-			// call here class movie
-		//	System.out.println("test movie" + movie);
-		//	System.out.println("test book" + book);
-
 			this.library.register();
 		} else if (c == 'b') {
 			setMovie(false);
 			setBook(true);
-		//	System.out.println("test book" + book);
-		//	System.out.println("test movie" + movie);
-			// call here class book
 			this.library.register();
 		} else {
 			System.out.println("unknown character");
@@ -328,10 +266,5 @@ public class LibraryManager {
 	private void listCommand() {
 		System.out.println("ID   " + "TYPE   " + "NAME   " + "STATE");
 		this.library.list();
-		//System.out.println("Command to get all books");
-
 	}
-
-
-
 }

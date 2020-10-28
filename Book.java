@@ -8,7 +8,7 @@ public class Book extends Product implements Serializable {
 	private String title;
 	private int value;
 	private boolean borrowed;
-	//private int type;
+	private final int type = 1;
 	private int pages;
 	private String publisher;
 	private String CustomerName;
@@ -21,84 +21,59 @@ public class Book extends Product implements Serializable {
 		this.borrowed = borrowed; 
 	}
 */
-	public Book(){
-		super();
-	}
+	public Book(){ super(); }
+
+	public int getType(){return type;}
 
 	@Override
 	public void setCustomerName(String CustomerName){
 		super.setCustomerName(CustomerName);
-		this.CustomerName = CustomerName;
-	}
+		this.CustomerName = CustomerName; }
+
 	@Override
 	public void setCustomerPhoneNo(String CustomerPhoneNo){
 		super.setCustomerPhoneNo(CustomerPhoneNo);
-		this.CustomerPhoneNo = CustomerPhoneNo;
-	}
-	public String getCustomerName(){return CustomerName;}
-	public String getCustomerPhoneNo(){return CustomerPhoneNo;}
+		this.CustomerPhoneNo = CustomerPhoneNo; }
+
+		public String getCustomerName(){return CustomerName;}
+
+		public String getCustomerPhoneNo(){return CustomerPhoneNo;}
 
 	@Override
 	public void setBorrowed(boolean borrowed) {
 		super.setBorrowed(borrowed);
-		this.borrowed = borrowed;
-	}
+		this.borrowed = borrowed; }
 
-	public boolean getBorrowed() {
-		return borrowed;
-	}
+	public boolean getBorrowed() { return borrowed; }
 
+	public void setId(int id) { this.id = id; }
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getId() {
-		return id;
-	}
+	public int getId() { return id; }
 
 	public void setTitle(String title) { this.title = title; }
 
-	public String getTitle() {
-		return title;
-	}
+	public String getTitle() { return title; }
 
 	public void setValue(int value) { this.value = value; }
 
-	public int getValue() {
-		return value;
-	}
+	public int getValue() { return value; }
 
 	public void setPages(int pages) { this.pages = pages; }
-/*
-	public int getPages() {
-		return pages;
-	}
-*/
+
+	public int getPages() { return pages; }
+
 	public void setPublisher(String publisher) { this.publisher = publisher; }
-/*
-	public String getPublisher() {
-		return publisher;
-	}
-*/
+
+	public String getPublisher() { return publisher; }
+
 	@Override      // Overshadowed the toString() method
 	public String toString() {
 		String isBorrowed = null;
-		if (!this.getBorrowed())  {
+		if (!this.getBorrowed())
 			isBorrowed = "\n\tBorrowed by " + getCustomerName() + ", " + getCustomerPhoneNo();
-		}
-		else if (this.getBorrowed())  {
+		else if (this.getBorrowed())
 			isBorrowed = "(in stock)";
-		}
-		
+
 		return  id + " (" + this.getClass().getSimpleName() + "): " + title + ". " + isBorrowed;
 	}
-
-
-	public String update() {
-		return this.getClass().getSimpleName() + title + ": Value " + value + "kr, Pages " + pages + ", Publisher Name " + publisher;
-
-
-	}
-
 }
