@@ -44,7 +44,7 @@ public class LibraryManager {
 		LibraryManager manager = new LibraryManager(libPath);
 		System.out.println("> java LibrarySystem\nWelcome!\nSuccesfully initialized system state from file(s).");
 		System.out.println("\nCurrent inventory:");
-		// read file the current inventory from here
+		
 		manager.library.init();
 		manager.library.list();
 		try {
@@ -177,23 +177,7 @@ public class LibraryManager {
 		}
 	}
 
-	private void checkoutCommand(String[] argument) {
-
-		charCheck(argument);
-
-		if (counter == 0){
-			Number = Integer.parseInt(argument[0]);
-			counter = 0;
-			if(Number < 0)
-				System.out.println("Invalid Argument: Negative Numbers");
-			else
-				this.library.checkout(argument);
-		}else {
-			System.out.println("Invalid Argument: Characters");
-			counter = 0;}
-	}
-
-	private void checkinCommand(String[] argument) {
+	private void Command(String[] argument, int index){
 
 		charCheck(argument);
 		if (counter == 0){
@@ -201,44 +185,33 @@ public class LibraryManager {
 			counter = 0;
 			if(Number < 0)
 				System.out.println("Invalid Argument: Negative Numbers");
-			else
-				this.library.checkin(argument);
-		}else {
-			System.out.println("Invalid Argument: Characters");
-			counter = 0; }
-	}
-
-
-
-	private void deregisterCommand(String[] argument) {
-
-		charCheck(argument);
-		if (counter == 0){
-			Number = Integer.parseInt(argument[0]);
-			counter = 0;
-			if(Number < 0)
-				System.out.println("Invalid Argument: Negative Numbers");
-			else
+			else if(index == 1)
 				this.library.deregister(argument);
-		}else {
-			System.out.println("Invalid Argument: Characters");
-			counter = 0;}
-	}
-
-
-	private void infoCommand(String[] argument){
-
-		charCheck(argument);
-		if (counter == 0){
-			Number = Integer.parseInt(argument[0]);
-			counter = 0;
-			if(Number < 0)
-				System.out.println("Invalid Argument: Negative Numbers");
-			else
+			else if(index == 2)
+				this.library.checkin(argument);
+			else if(index == 3)
+				this.library.checkout(argument);
+			else if(index == 4)
 				this.library.info(argument);
 		}else {
 			System.out.println("Invalid Argument: Characters");
 			counter = 0;}
+	}
+
+	private void checkoutCommand(String[] argument) {
+		Command(argument,3);
+	}
+
+	private void checkinCommand(String[] argument) {
+	Command(argument,2);
+	}
+
+	private void deregisterCommand(String[] argument) {
+	Command(argument,1);
+	}
+
+	private void infoCommand(String[] argument){
+	Command(argument,4);
 	}
 
 	private void registerCommand() {
