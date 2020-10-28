@@ -61,12 +61,37 @@ public class Library implements IntLib {
 				System.out.println("Enter Title: ");
 				System.out.print("> ");
 				bok.setTitle(st.nextLine());
-				System.out.println("Enter Value: ");
-				System.out.print("> ");
-				bok.setValue(sc.nextInt());
-				System.out.println("Enter Pages: ");
-				System.out.print("> ");
-				bok.setPages(sc.nextInt());
+				do {
+					if (count == 1) {
+						System.out.println("Invalid value: negative number");
+						System.out.println("Re-Enter value: ");
+						System.out.print("> ");
+						bok.setValue(sc.nextInt());
+					}
+					else {
+						System.out.println("Enter Value: ");
+						System.out.print("> ");
+						bok.setValue(sc.nextInt());
+						count = 1;}
+				}while(bok.getValue() < 0);
+				count = 0;
+
+
+				do {
+					if (count == 1) {
+						System.out.println("Invalid page number: negative number");
+						System.out.println("Re-Enter page numbers: ");
+						System.out.print("> ");
+						bok.setPages(sc.nextInt());
+					}
+					else {
+						System.out.println("Enter page numbers: ");
+						System.out.print("> ");
+						bok.setPages(sc.nextInt());
+						count = 1;}
+				}while(bok.getPages() < 0);
+				count = 0;
+
 				System.out.println("Enter Publisher Name: ");
 				System.out.print("> ");
 				Scanner sp = new Scanner(System.in);
