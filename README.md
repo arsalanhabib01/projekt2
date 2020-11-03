@@ -10,7 +10,8 @@
 > ##  How to run 
 >1. open cmd (Windows) or terminal (MacOS/Linux).
 >2. type "cd C:\path\path\..\projekt2\out\production\projekt2   (the file path to the file).
->3. type "java LibraryManager" to run program.
+>3. type "javac LibraryManager.java" to compile the program.
+>4. type "java LibraryManager" to run program.
 >
 > ##  COMMANDS 
 >### list - lists the current library.
