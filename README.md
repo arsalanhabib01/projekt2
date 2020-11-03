@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------
 > This program is to write a console interface that allows a user in the business to perform actions such as lending products to customers or checking the current inventory status.
 >
-> This program requires and Java Runtime Environment (JRE) to run.
+> This program requires Java Runtime Environment (JRE) to run.
 > JRE can be downloaded through an JDK (such as the: Java SE Development Kit)
 > 
 >
