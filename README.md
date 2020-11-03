@@ -19,7 +19,7 @@
 >checkout - lends a book or movie to a customer.
 >checkin - returns a book or movie to library (needs ID).
 >info - shows info of a book or movie (need ID).
->exit - quits the program
+>quit - quits the program
 
 
 ### Coded by: :busts_in_silhouette:
