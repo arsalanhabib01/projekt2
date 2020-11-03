@@ -2,7 +2,7 @@
 ## Välkommen till kursen Grundläggande programmering Java 
 #  Projektuppgift 2 - Lagersystem för Bibliotek :rocket:
 # -----------------------------------------------------------------
-> This program is to write a console interface that allows a user in the business to perform actions such as lending products to customers or checking the current inventory status.
+> This program uses a console interface that allows a user to perform actions such as lending products to customers or listing the current inventory status.
 >
 > This program requires Java Runtime Environment (JRE) to run.
 > JRE can be downloaded through an JDK (required version 15) (such as the: Java SE Development Kit)
